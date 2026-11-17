@@ -23,6 +23,7 @@ import {
   type Project,
 } from "@/content/cv";
 import { cn, formatMonth, formatRange } from "@/lib/format";
+import { setModalOpen } from "@/lib/modal-layer";
 import type { ModuleId } from "./modules-data";
 
 /* ------------------------------------------------------------------ */
@@ -363,6 +364,7 @@ function ProjectsModule() {
 
   useEffect(() => {
     if (!openId) return;
+    setModalOpen(true);
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.stopImmediatePropagation();
@@ -371,7 +373,10 @@ function ProjectsModule() {
       }
     };
     window.addEventListener("keydown", onKeyDown, true);
-    return () => window.removeEventListener("keydown", onKeyDown, true);
+    return () => {
+      setModalOpen(false);
+      window.removeEventListener("keydown", onKeyDown, true);
+    };
   }, [openId]);
 
   return (
@@ -428,29 +433,26 @@ function ProjectsModule() {
         ))}
       </div>
 
-      <AnimatePresence>
-        {openProject && (
-          <>
-            <motion.div
-              key="backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setOpenId(null)}
-              className="fixed inset-0 z-50 bg-void/75 backdrop-blur-sm"
-              aria-hidden="true"
-            />
-            <motion.div
-              key="sheet"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby={`project-${openProject.id}`}
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 32 }}
-              className="glass-strong fixed right-0 top-0 z-50 flex h-dvh w-full max-w-lg flex-col border-l"
-            >
+      {openProject && (
+        <>
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setOpenId(null)}
+            className="fixed inset-0 z-50 bg-void/75 backdrop-blur-sm"
+            aria-hidden="true"
+          />
+          <motion.div
+            key="sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`project-${openProject.id}`}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 32 }}
+            className="glass-strong fixed right-0 top-0 z-50 flex h-dvh w-full max-w-lg flex-col border-l"
+          >
               <div className="flex items-center justify-between border-b border-white/8 px-5 py-4">
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
                   Proyecto
@@ -558,7 +560,6 @@ function ProjectsModule() {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
     </div>
   );
 }

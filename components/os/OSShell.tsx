@@ -10,6 +10,7 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 import { certifications, profile, projects } from "@/content/cv";
 import { cn } from "@/lib/format";
+import { modalLayer } from "@/lib/modal-layer";
 import { Mascot } from "./Mascot";
 import { ModuleContent } from "./Modules";
 import { MODULES, type ModuleId } from "./modules-data";
@@ -44,8 +45,8 @@ export function OSShell({ onExit }: { onExit: () => void }) {
       }
 
       if (event.key === "Escape") {
-        // Si hay una ficha de proyecto abierta, ese componente gestiona el cierre.
-        if (document.querySelector('[role="dialog"]')) return;
+        // Una ficha de proyecto abierta consume el primer Escape.
+        if (modalLayer.open) return;
         event.preventDefault();
         if (active) setActive(null);
         else onExit();
@@ -181,14 +182,14 @@ export function OSShell({ onExit }: { onExit: () => void }) {
           className="relative min-h-0 flex-1 overflow-y-auto scroll-slim px-4 pb-28 pt-4 outline-none sm:px-6 md:pb-6"
         >
           <div className="mx-auto w-full max-w-6xl">
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence mode="popLayout" initial={false}>
               {active && current ? (
                 <motion.div
                   key={active}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="mb-5 flex flex-wrap items-end justify-between gap-3 border-b border-white/8 pb-4">
                     <div>
@@ -220,8 +221,8 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                   key="home"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="flex flex-wrap items-end justify-between gap-4 pb-5">
                     <div>
