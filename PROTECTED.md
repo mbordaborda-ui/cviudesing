@@ -60,7 +60,10 @@ Para comparar:
 git diff portatil-original HEAD -- components/three
 ```
 
-Debe salir **vacío**. Si no lo está, alguien modificó el portátil.
+El diff **no debe contener cambios de geometría, cámara, tiempos ni animación**.
+La única diferencia autorizada es la capa de temas de color añadida para el CV
+estático (`LAPTOP_THEME_GREEN`), que no altera el aspecto por defecto del
+portafolio 3D (`LAPTOP_THEME_DARK`).
 
 ## Uso en el sitio estático (PROYECTMIGUELBORDA)
 
