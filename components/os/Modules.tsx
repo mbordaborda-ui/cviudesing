@@ -24,7 +24,7 @@ import {
 } from "@/content/cv";
 import { cn, formatMonth, formatRange } from "@/lib/format";
 import { setModalOpen } from "@/lib/modal-layer";
-import { Stagger, StaggerItem, tiltMove, tiltReset } from "./motion";
+import { Stagger, StaggerItem, tiltMove, tiltReset, magneticMove, magneticReset } from "./motion";
 import { Reveal } from "./Reveal";
 import type { ModuleId } from "./modules-data";
 
@@ -110,8 +110,50 @@ function AboutModule() {
   ];
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+    <div className="module-enter grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
       <motion.section {...cardMotion}>
+        <div className="relative mb-5 overflow-hidden rounded-2xl border border-cyan/15 bg-[radial-gradient(circle_at_25%_15%,rgba(61,110,255,0.20),transparent_62%)] p-4">
+          <div className="scanlines pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />
+          <div className="holo-scan pointer-events-none absolute inset-x-0 h-16 bg-gradient-to-b from-transparent via-cyan/15 to-transparent" aria-hidden="true" />
+
+          <div className="relative flex items-center justify-between gap-4">
+            <div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-cyan/80">
+                identidad · full stack
+              </p>
+              <p className="mt-2 font-display text-xl font-semibold text-ink sm:text-2xl">
+                {profile.name}
+              </p>
+              <p className="mt-1 font-mono text-[9.5px] uppercase tracking-[0.16em] text-muted">
+                {profile.role}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {["Automatización", "APIs", "Datos"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 font-mono text-[8.5px] uppercase tracking-[0.12em] text-ink/70"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative size-24 shrink-0 sm:size-28" aria-hidden="true">
+              <div className="holo-ring absolute inset-0 rounded-full border border-cyan/25" />
+              <div className="absolute inset-2 rounded-full border border-dashed border-white/10" />
+              <div className="holo-ring-rev absolute inset-4 rounded-full border border-violet/30" />
+              <div className="absolute inset-0 grid place-items-center">
+                <span className="bg-gradient-to-br from-cyan to-violet bg-clip-text font-display text-2xl font-bold text-transparent">
+                  MB
+                </span>
+              </div>
+              <span className="absolute left-1/2 top-0 size-1.5 -translate-x-1/2 rounded-full bg-cyan shadow-[0_0_10px_rgba(53,227,255,0.9)]" />
+              <span className="absolute bottom-1 right-2 size-1 rounded-full bg-violet shadow-[0_0_8px_rgba(139,92,246,0.9)]" />
+            </div>
+          </div>
+        </div>
+
         <p className="kicker">Perfil</p>
         <h2 className="display mt-3 text-2xl font-semibold text-ink sm:text-3xl">
           <span className="bg-gradient-to-r from-ink via-cyan/90 to-ink bg-clip-text text-transparent text-shimmer">
@@ -143,14 +185,41 @@ function AboutModule() {
         )}
       </motion.section>
 
-      <Stagger className="grid gap-3 sm:grid-cols-2">
+      <Stagger className="relative grid gap-3 sm:grid-cols-2">
+        <svg
+          className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
+          aria-hidden="true"
+        >
+          <line
+            x1="50%"
+            y1="4%"
+            x2="50%"
+            y2="96%"
+            stroke="rgba(53,227,255,0.16)"
+            strokeWidth="1"
+            strokeDasharray="4 7"
+          />
+          <line
+            x1="4%"
+            y1="50%"
+            x2="96%"
+            y2="50%"
+            stroke="rgba(139,92,246,0.12)"
+            strokeWidth="1"
+            strokeDasharray="4 9"
+          />
+        </svg>
         {about.strengths.map((strength, index) => (
           <StaggerItem key={strength.title} className="h-full">
             <article
               onMouseMove={(event) => tiltMove(event, 8)}
               onMouseLeave={tiltReset}
-              className="spotlight glass tilt sheen flex h-full flex-col justify-between rounded-2xl p-4"
+              className="spotlight glass tilt sheen relative flex h-full flex-col justify-between rounded-2xl p-4"
             >
+              <span
+                className="hud-dot absolute right-3 top-3 size-1 rounded-full bg-cyan"
+                aria-hidden="true"
+              />
               <span className="font-mono text-[10px] text-cyan/70">
                 0{index + 1}
               </span>
@@ -160,6 +229,18 @@ function AboutModule() {
               <p className="mt-2 text-[12px] leading-relaxed text-muted">
                 {strength.body}
               </p>
+              <div className="mt-4 flex items-end gap-1" aria-hidden="true">
+                {[0, 1, 2, 3, 4, 5].map((bar) => (
+                  <span
+                    key={bar}
+                    className="signal-bar w-1 rounded-sm bg-cyan/50"
+                    style={{
+                      height: `${7 + ((bar * 7) % 16)}px`,
+                      animationDelay: `${bar * 0.13}s`,
+                    }}
+                  />
+                ))}
+              </div>
             </article>
           </StaggerItem>
         ))}
@@ -177,7 +258,7 @@ function StackModule() {
   const active = skills.find((category) => category.id === selected) ?? skills[0];
 
   return (
-    <div>
+    <div className="module-enter">
       <div className="flex flex-wrap gap-2">
         {skills.map((category) => {
           const isActive = category.id === active.id;
@@ -207,6 +288,8 @@ function StackModule() {
         })}
       </div>
 
+      <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_240px]">
+      <div className="min-w-0">
       <AnimatePresence mode="wait">
         <motion.section
           key={active.id}
@@ -240,6 +323,60 @@ function StackModule() {
           </ul>
         </motion.section>
       </AnimatePresence>
+      </div>
+
+      <div className="hidden lg:block">
+        <div className="relative mx-auto aspect-square w-full max-w-[230px] rounded-full border border-white/10 bg-[radial-gradient(circle,rgba(61,110,255,0.14),transparent_70%)]">
+          <div
+            className="radar-sweep absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,rgba(53,227,255,0.22),transparent_38%)]"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-6 rounded-full border border-white/10" aria-hidden="true" />
+          <div className="absolute inset-12 rounded-full border border-white/5" aria-hidden="true" />
+
+          {skills.map((category, index) => {
+            const angle = (index / skills.length) * Math.PI * 2 - Math.PI / 2;
+            const radius = 42;
+            const isActive = category.id === active.id;
+            return (
+              <button
+                key={category.id}
+                type="button"
+                onClick={() => setSelected(category.id)}
+                aria-label={`Ver ${category.label}`}
+                aria-pressed={isActive}
+                className="group absolute grid size-6 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full"
+                style={{
+                  left: `${50 + Math.cos(angle) * radius}%`,
+                  top: `${50 + Math.sin(angle) * radius}%`,
+                }}
+              >
+                <span
+                  className={cn(
+                    "size-1.5 rounded-full transition-all duration-300",
+                    isActive
+                      ? "scale-[1.8] bg-cyan shadow-[0_0_12px_rgba(53,227,255,0.9)]"
+                      : "bg-white/30 group-hover:scale-125 group-hover:bg-cyan/70",
+                  )}
+                />
+              </button>
+            );
+          })}
+
+          <div className="absolute inset-0 grid place-items-center px-6 text-center">
+            <div>
+              <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
+                categoría
+              </p>
+              <p className="mt-1 font-display text-sm text-ink">{active.label}</p>
+              <p className="mt-0.5 font-mono text-[9px] text-cyan/70">
+                {active.items.length} tecnologías
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
 
       <p className="mt-6 flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.02] px-3.5 py-3 font-mono text-[10px] leading-relaxed text-muted">
         <Sparkles className="mt-0.5 size-3.5 shrink-0 text-violet" aria-hidden="true" />
@@ -255,7 +392,7 @@ function StackModule() {
 
 function ExperienceModule() {
   return (
-    <div className="relative">
+    <div className="module-enter relative">
       <motion.div
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
@@ -388,7 +525,7 @@ function ProjectsModule() {
   }, [openId]);
 
   return (
-    <div>
+    <div className="module-enter">
       <p className="font-mono text-[10px] leading-relaxed text-muted">
         Proyectos reales. Las fichas y enlaces se completan desde{" "}
         <code className="rounded bg-white/5 px-1 py-0.5 text-cyan/80">
@@ -448,7 +585,7 @@ function ProjectsModule() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={() => setOpenId(null)}
-            className="fixed inset-0 z-50 bg-void/75 backdrop-blur-sm"
+            className="cinema-flash fixed inset-0 z-50 bg-void/80 backdrop-blur-md"
             aria-hidden="true"
           />
           <motion.div
@@ -456,9 +593,10 @@ function ProjectsModule() {
             role="dialog"
             aria-modal="true"
             aria-labelledby={`project-${openProject.id}`}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 32 }}
+            initial={{ opacity: 0, x: 90, rotateY: -8, scale: 0.96, filter: "blur(10px)" }}
+            animate={{ opacity: 1, x: 0, rotateY: 0, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformPerspective: 1400 }}
             className="glass-strong fixed right-0 top-0 z-50 flex h-dvh w-full max-w-lg flex-col border-l"
           >
               <div className="flex items-center justify-between border-b border-white/8 px-5 py-4">
@@ -583,7 +721,7 @@ function ProjectsModule() {
 
 function EducationModule() {
   return (
-    <div className="space-y-7">
+    <div className="module-enter space-y-7">
       <section>
         <div className="flex items-center justify-between">
           <p className="kicker">Formación académica</p>
@@ -706,14 +844,39 @@ function ContactModule() {
   };
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-      <motion.section {...cardMotion} className="glass-strong overflow-hidden rounded-2xl">
+    <div className="module-enter grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+      <motion.section
+        {...cardMotion}
+        className="glass-strong glow-border overflow-hidden rounded-2xl"
+      >
         <div className="flex items-center gap-2 border-b border-white/8 px-4 py-2.5">
           <span className="size-2 rounded-full bg-[#ff5f57]/70" />
           <span className="size-2 rounded-full bg-[#febc2e]/70" />
           <span className="size-2 rounded-full bg-[#28c840]/70" />
           <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-muted">
             ~/contacto
+          </span>
+        </div>
+
+        <div className="relative flex items-center gap-2 overflow-hidden border-b border-cyan/10 bg-cyan/[0.04] px-4 py-2 font-mono text-[8.5px] uppercase tracking-[0.18em] text-cyan/80">
+          <motion.span
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute bottom-0 left-0 h-px w-full origin-left bg-gradient-to-r from-cyan via-electric to-transparent"
+            aria-hidden="true"
+          />
+          <span className="size-1.5 rounded-full bg-cyan pulse-dot" />
+          canal cifrado
+          <span className="ml-auto flex items-center gap-1.5 text-muted/60">
+            handshake
+            {[0, 1, 2].map((dot) => (
+              <span
+                key={dot}
+                className="hud-dot size-1 rounded-full bg-cyan/70"
+                style={{ animationDelay: `${dot * 0.2}s` }}
+              />
+            ))}
           </span>
         </div>
 
@@ -765,7 +928,9 @@ function ContactModule() {
             <button
               type="button"
               onClick={copyEmail}
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-[11.5px] font-semibold text-void transition-transform hover:-translate-y-0.5"
+              onMouseMove={(event) => magneticMove(event, 5)}
+              onMouseLeave={magneticReset}
+              className="magnetic inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-[11.5px] font-semibold text-void transition-transform hover:-translate-y-0.5 active:scale-95"
             >
               {copied ? (
                 <Check className="size-3.5" aria-hidden="true" />
@@ -777,7 +942,9 @@ function ContactModule() {
 
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/12 px-4 py-2.5 text-[11.5px] text-ink/80 transition-colors hover:border-cyan/30 hover:text-ink"
+              onMouseMove={(event) => magneticMove(event, 5)}
+              onMouseLeave={magneticReset}
+              className="magnetic inline-flex items-center gap-2 rounded-full border border-white/12 px-4 py-2.5 text-[11.5px] text-ink/80 transition-colors hover:border-cyan/30 hover:text-ink active:scale-95"
             >
               <Mail className="size-3.5" aria-hidden="true" />
               Escribir correo

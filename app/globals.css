@@ -577,3 +577,230 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+/* =============================================================
+   CINEMATIC LAYER — transiciones, holografía y microinteracciones
+   ============================================================= */
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Barrido diagonal de energía */
+@keyframes cinema-sweep {
+  0% { transform: translate3d(-160%, 0, 0) skewX(-18deg); opacity: 0; }
+  12% { opacity: 0.9; }
+  100% { transform: translate3d(340%, 0, 0) skewX(-18deg); opacity: 0; }
+}
+
+.cinema-sweep {
+  animation: cinema-sweep 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cinema-flash {
+  0% { opacity: 0; }
+  16% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+.cinema-flash {
+  animation: cinema-flash 0.65s ease-out both;
+}
+
+@keyframes cinema-streak {
+  0% { transform: translateY(120%) scaleY(0.4); opacity: 0; }
+  30% { opacity: 0.9; }
+  100% { transform: translateY(-160%) scaleY(1.4); opacity: 0; }
+}
+
+.cinema-streak {
+  animation: cinema-streak 0.75s ease-out both;
+}
+
+@keyframes cinema-scan {
+  0% { transform: translateY(-10%); opacity: 0; }
+  25% { opacity: 0.6; }
+  100% { transform: translateY(1100%); opacity: 0; }
+}
+
+.cinema-scan {
+  animation: cinema-scan 0.8s linear both;
+}
+
+@keyframes cinema-particle {
+  0% { transform: translate3d(0, 0, 0) scale(0.3); opacity: 0; }
+  25% { opacity: 0.85; }
+  100% { transform: translate3d(var(--px, 0), var(--py, -40px), 0) scale(1); opacity: 0; }
+}
+
+.cinema-particle {
+  animation: cinema-particle var(--pdur, 0.8s) ease-out both;
+}
+
+@keyframes warp-pulse {
+  0% { filter: blur(0) saturate(1); transform: scale(1); }
+  35% { filter: blur(2.5px) saturate(1.3); transform: scale(1.006); }
+  100% { filter: blur(0) saturate(1); transform: scale(1); }
+}
+
+.warp {
+  animation: warp-pulse 0.6s ease-out both;
+}
+
+@keyframes title-wipe {
+  from { clip-path: inset(0 100% 0 0); opacity: 0.15; }
+  to { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+.title-wipe {
+  animation: title-wipe 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translate3d(0, 20px, 0) scale(0.985); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+.module-enter > * {
+  animation: panel-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.module-enter > *:nth-child(1) { animation-delay: 0.05s; }
+.module-enter > *:nth-child(2) { animation-delay: 0.13s; }
+.module-enter > *:nth-child(3) { animation-delay: 0.21s; }
+.module-enter > *:nth-child(4) { animation-delay: 0.29s; }
+.module-enter > *:nth-child(5) { animation-delay: 0.37s; }
+.module-enter > *:nth-child(6) { animation-delay: 0.45s; }
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.holo-ring {
+  animation: spin-slow 16s linear infinite;
+}
+
+.holo-ring-rev {
+  animation: spin-slow 24s linear infinite reverse;
+}
+
+@keyframes holo-scan {
+  0% { transform: translateY(-120%); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(340%); opacity: 0; }
+}
+
+.holo-scan {
+  animation: holo-scan 5s linear infinite;
+}
+
+@keyframes signal-bar {
+  0%, 100% { transform: scaleY(0.35); opacity: 0.45; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+.signal-bar {
+  transform-origin: bottom;
+  animation: signal-bar 1.7s ease-in-out infinite;
+}
+
+@keyframes radar-spin {
+  to { transform: rotate(360deg); }
+}
+
+.radar-sweep {
+  animation: radar-spin 6s linear infinite;
+}
+
+@keyframes hud-blink {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+.hud-dot {
+  animation: hud-blink 2.2s ease-in-out infinite;
+}
+
+@keyframes drift-up {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  15% { opacity: 0.55; }
+  100% { transform: translate3d(var(--dx, 10px), -140px, 0); opacity: 0; }
+}
+
+.ambient-dot {
+  animation: drift-up var(--dur, 14s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0 32%,
+    rgba(53, 227, 255, 0.75) 44%,
+    rgba(61, 110, 255, 0.5) 52%,
+    transparent 64% 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 4.5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes border-spin {
+  to { --angle: 360deg; }
+}
+
+.magnetic {
+  transition: transform 0.35s var(--ease-out);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module-enter > *,
+  .cinema-sweep,
+  .cinema-flash,
+  .cinema-streak,
+  .cinema-scan,
+  .cinema-particle,
+  .warp,
+  .title-wipe,
+  .holo-ring,
+  .holo-ring-rev,
+  .holo-scan,
+  .signal-bar,
+  .radar-sweep,
+  .ambient-dot,
+  .hud-dot,
+  .glow-border::before {
+    animation: none !important;
+  }
+}
+
+/* En pantallas pequeñas se recorta lo que más cuesta en GPU. */
+@media (max-width: 768px) {
+  .warp {
+    animation: none;
+  }
+
+  .ambient-dot:nth-child(n + 9) {
+    display: none;
+  }
+
+  .cinema-streak {
+    display: none;
+  }
+}

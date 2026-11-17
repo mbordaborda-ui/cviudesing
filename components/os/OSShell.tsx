@@ -6,12 +6,20 @@ import {
   ArrowUpRight,
   Command,
   Power,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { certifications, profile, projects, skills } from "@/content/cv";
 import { cn } from "@/lib/format";
 import { modalLayer } from "@/lib/modal-layer";
+import {
+  initSfx,
+  playTone,
+  setSfxEnabled as persistSfx,
+} from "@/lib/sfx";
 import { BootSequence } from "./BootSequence";
+import { CinematicTransition } from "./CinematicTransition";
 import { Mascot } from "./Mascot";
 import { ModuleContent } from "./Modules";
 import { MODULES, type ModuleId } from "./modules-data";
@@ -20,9 +28,39 @@ import { spaceVariants, tiltMove, tiltReset } from "./motion";
 export function OSShell({ onExit }: { onExit: () => void }) {
   const [active, setActive] = useState<ModuleId | null>(null);
   const [clock, setClock] = useState("");
+  const [syncing, setSyncing] = useState(false);
+  const [sfx, setSfx] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
   const scrollBar = useRef<HTMLDivElement>(null);
   const previous = useRef<ModuleId | null>(null);
+
+  // Partículas ambientales: posiciones estables durante toda la sesión.
+  const ambient = useMemo(
+    () =>
+      Array.from({ length: 18 }, (_, index) => ({
+        id: index,
+        left: Math.random() * 100,
+        top: 40 + Math.random() * 60,
+        size: 1 + Math.random() * 2,
+        dur: 12 + Math.random() * 12,
+        delay: Math.random() * 10,
+        dx: (Math.random() - 0.5) * 40,
+        opacity: 0.15 + Math.random() * 0.35,
+      })),
+    [],
+  );
+
+  useEffect(() => {
+    setSfx(initSfx());
+  }, []);
+
+  // Indicador de sincronización + sonido opcional al cambiar de espacio.
+  useEffect(() => {
+    setSyncing(true);
+    playTone("nav");
+    const timer = window.setTimeout(() => setSyncing(false), 750);
+    return () => window.clearTimeout(timer);
+  }, [active]);
 
   const handleScroll = (event: React.UIEvent<HTMLElement>) => {
     const element = event.currentTarget;
@@ -147,6 +185,24 @@ export function OSShell({ onExit }: { onExit: () => void }) {
               "radial-gradient(circle at 50% 40%, #000 0%, transparent 75%)",
           }}
         />
+        {ambient.map((dot) => (
+          <span
+            key={dot.id}
+            className="ambient-dot absolute rounded-full bg-cyan"
+            style={
+              {
+                left: `${dot.left}%`,
+                top: `${dot.top}%`,
+                width: dot.size,
+                height: dot.size,
+                opacity: dot.opacity,
+                "--dur": `${dot.dur}s`,
+                "--delay": `${dot.delay}s`,
+                "--dx": `${dot.dx}px`,
+              } as React.CSSProperties
+            }
+          />
+        ))}
       </div>
 
       {/* Barra de sistema */}
@@ -172,10 +228,64 @@ export function OSShell({ onExit }: { onExit: () => void }) {
           {current ? `modulos/${current.index}-${current.id}` : "inicio"}
         </p>
 
+        {/* Ubicación dentro del entorno */}
+        <div className="hidden items-center gap-1.5 lg:flex" aria-hidden="true">
+          {MODULES.map((module) => (
+            <span
+              key={module.id}
+              className={cn(
+                "h-1 rounded-full transition-all duration-300",
+                active === module.id
+                  ? "w-5 bg-cyan shadow-[0_0_8px_rgba(53,227,255,0.8)]"
+                  : "w-1 bg-white/20",
+              )}
+            />
+          ))}
+        </div>
+
+        <AnimatePresence>
+          {syncing && (
+            <motion.span
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              className="inline-flex items-center gap-1.5 rounded-full border border-cyan/25 bg-cyan/10 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.16em] text-cyan"
+            >
+              <span className="size-1.5 animate-ping rounded-full bg-cyan" />
+              sync
+            </motion.span>
+          )}
+        </AnimatePresence>
+
         <div className="hidden items-center gap-1 rounded-md border border-white/8 bg-white/[0.03] px-2 py-1 font-mono text-[9px] text-muted/80 md:flex">
           <Command className="size-3" aria-hidden="true" />
           1–6 · Esc
         </div>
+
+        <button
+          type="button"
+          onClick={() => {
+            const next = !sfx;
+            setSfx(next);
+            persistSfx(next);
+            if (next) playTone("confirm");
+          }}
+          aria-pressed={sfx}
+          aria-label={sfx ? "Desactivar sonidos de interfaz" : "Activar sonidos de interfaz"}
+          title={sfx ? "Sonido activado" : "Sonido desactivado"}
+          className={cn(
+            "grid size-7 place-items-center rounded-lg border transition-colors",
+            sfx
+              ? "border-cyan/30 bg-cyan/10 text-cyan"
+              : "border-white/10 bg-white/[0.03] text-muted hover:text-ink",
+          )}
+        >
+          {sfx ? (
+            <Volume2 className="size-3.5" aria-hidden="true" />
+          ) : (
+            <VolumeX className="size-3.5" aria-hidden="true" />
+          )}
+        </button>
 
         <span className="font-mono text-[10px] tabular text-ink/70">
           {clock || "--:--"}
@@ -304,7 +414,7 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                         <p className="font-mono text-[10px] text-cyan/80">
                           {current.index} — {current.short.toUpperCase()}
                         </p>
-                        <h1 className="display mt-1 text-2xl font-semibold text-ink sm:text-3xl">
+                        <h1 className="title-wipe display mt-1 text-2xl font-semibold text-ink sm:text-3xl">
                           {current.label}
                         </h1>
                         <p className="mt-1 max-w-xl text-[12px] text-muted">
@@ -330,7 +440,16 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                     </button>
                   </div>
 
-                  <div className="hud-corners relative rounded-2xl border border-white/[0.06] bg-[#070b14]/40 p-3 sm:p-5">
+                  <div
+                    key={active}
+                    className="warp hud-corners relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#070b14]/40 p-3 sm:p-5"
+                  >
+                    <div
+                      className="pointer-events-none absolute inset-0 overflow-hidden"
+                      aria-hidden="true"
+                    >
+                      <div className="holo-scan absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-cyan/[0.05] to-transparent" />
+                    </div>
                     <ModuleContent id={active} />
                   </div>
                 </motion.div>
@@ -454,6 +573,8 @@ export function OSShell({ onExit }: { onExit: () => void }) {
           </main>
         </div>
       </div>
+
+      <CinematicTransition trigger={active ?? "home"} />
 
       {/* Dock móvil */}
       <nav

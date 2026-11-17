@@ -92,6 +92,20 @@ export function tiltReset(event: React.MouseEvent<HTMLElement>) {
   element.style.setProperty("--rx", "0deg");
 }
 
+/** Efecto magnético sutil para botones principales. */
+export function magneticMove(event: React.MouseEvent<HTMLElement>, strength = 7) {
+  if (prefersReducedMotion()) return;
+  const element = event.currentTarget;
+  const rect = element.getBoundingClientRect();
+  const x = ((event.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)) * strength;
+  const y = ((event.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)) * strength;
+  element.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+}
+
+export function magneticReset(event: React.MouseEvent<HTMLElement>) {
+  event.currentTarget.style.transform = "";
+}
+
 /** Variantes de transición entre espacios del OS. */
 export const spaceVariants = {
   initial: {

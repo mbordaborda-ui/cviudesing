@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, CornerDownLeft, ShieldCheck } from "lucide-react";
 import { profile } from "@/content/cv";
+import { magneticMove, magneticReset } from "@/components/os/motion";
 
 interface StageOverlayProps {
   entering: boolean;
@@ -102,8 +103,10 @@ export function StageOverlay({ entering, onEnter }: StageOverlayProps) {
               id="enter-world"
               type="button"
               onClick={onEnter}
+              onMouseMove={(event) => magneticMove(event, 8)}
+              onMouseLeave={magneticReset}
               disabled={entering}
-              className="group pointer-events-auto inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[13px] font-semibold tracking-wide text-void transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white disabled:opacity-60 sm:px-7"
+              className="magnetic group pointer-events-auto inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[13px] font-semibold tracking-wide text-void transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white active:scale-95 disabled:opacity-60 sm:px-7"
             >
               VER PORTAFOLIO
               <ArrowRight
