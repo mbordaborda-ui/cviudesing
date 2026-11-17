@@ -8,6 +8,8 @@ import { LAPTOP_THEME_GREEN } from "@/components/three/Laptop";
  * estático. No modifica ni redeclara el modelo: reutiliza LaptopScene tal cual.
  */
 
+import { createScreenTexture, SCREEN_THEME_LIGHT } from "@/components/three/textures";
+
 interface MountOptions {
   onOpened?: () => void;
 }
@@ -16,6 +18,7 @@ interface LaptopApi {
   mount: (element: HTMLElement, options?: MountOptions) => void;
   enter: () => void;
   destroy: () => void;
+  screenPreview?: () => string;
 }
 
 let root: Root | null = null;
@@ -46,6 +49,11 @@ const api: LaptopApi = {
   },
 
   enter() {},
+
+  /** Utilidad de verificación: devuelve la textura de pantalla en PNG. */
+  screenPreview() {
+    return createScreenTexture(SCREEN_THEME_LIGHT).image.toDataURL("image/png");
+  },
 
   destroy() {
     if (root) {

@@ -37,18 +37,18 @@ export const SCREEN_THEME_DARK: ScreenTheme = {
 };
 
 export const SCREEN_THEME_LIGHT: ScreenTheme = {
-  bg: ["#ffffff", "#f7fbf0", "#eef5e2"],
-  grid: "rgba(143,183,29,0.18)",
-  halo: ["rgba(202,242,75,0.35)", "rgba(143,183,29,0.12)"],
-  bar: "rgba(255,255,255,0.92)",
-  barText: "rgba(11,11,12,0.55)",
-  mb: ["#b6e336", "#8fb71d", "#6f9a0e"],
-  mbGlow: "rgba(143,183,29,0.55)",
-  name: "rgba(11,11,12,0.9)",
-  role: "rgba(92,92,100,0.9)",
-  log: "rgba(92,92,100,0.8)",
-  logAccent: "#6f9a0e",
-  scan: "rgba(143,183,29,0.08)",
+  bg: ["#ffffff", "#f8fcef", "#eef5e2"],
+  grid: "rgba(143,183,29,0.22)",
+  halo: ["rgba(202,242,75,0.28)", "rgba(143,183,29,0.10)"],
+  bar: "rgba(255,255,255,0.95)",
+  barText: "rgba(11,11,12,0.62)",
+  mb: ["#7fae12", "#5f8a00", "#3f6b00"],
+  mbGlow: "rgba(95,138,0,0.45)",
+  name: "#0b0b0c",
+  role: "#3a3a40",
+  log: "#3a3a40",
+  logAccent: "#3f6b00",
+  scan: "rgba(143,183,29,0.10)",
 };
 
 export interface EmblemTheme {
@@ -155,7 +155,7 @@ export function createScreenTexture(
   ctx.globalAlpha = 1;
   ctx.fillStyle = theme.barText;
   ctx.font = "500 16px monospace";
-  ctx.fillText("miguel.os — boot", 110, 28);
+  ctx.fillText("MIGUEL BORDA — boot", 110, 28);
 
   // Monograma
   ctx.textAlign = "center";
@@ -181,7 +181,7 @@ export function createScreenTexture(
   ctx.textAlign = "left";
   ctx.font = "400 16px monospace";
   const lines = [
-    "> initializing miguel.os",
+    "> initializing portfolio",
     "> loading modules .......... 06/06",
     "> stack: react · ts · node · sql · c#",
     "> status: ready",
