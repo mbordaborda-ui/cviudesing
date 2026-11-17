@@ -45,6 +45,8 @@ export interface LaptopTheme {
   deck: DeckTheme;
   /** Brillo máximo de la pantalla al abrir. */
   screenEmissiveMax: number;
+  /** En el tema verde la pantalla no pasa por tone mapping (colores vivos). */
+  screenToneMapped: boolean;
 }
 
 /** Tema original: azul/cian/violeta (proyecto 3D). */
@@ -68,6 +70,7 @@ export const LAPTOP_THEME_DARK: LaptopTheme = {
   emblem: EMBLEM_THEME_DARK,
   deck: DECK_THEME_DARK,
   screenEmissiveMax: 1.65,
+  screenToneMapped: true,
 };
 
 /** Tema blanco/verde para el CV estático. Solo color. */
@@ -90,7 +93,8 @@ export const LAPTOP_THEME_GREEN: LaptopTheme = {
   screen: SCREEN_THEME_LIGHT,
   emblem: EMBLEM_THEME_GREEN,
   deck: DECK_THEME_GREEN,
-  screenEmissiveMax: 0.45,
+  screenEmissiveMax: 1.1,
+  screenToneMapped: false,
 };
 
 // Positivo = la tapa cae hacia el teclado (pantalla hacia abajo).
@@ -249,6 +253,7 @@ export function Laptop({
             emissiveIntensity={0.05}
             roughness={0.28}
             metalness={0}
+            toneMapped={theme.screenToneMapped}
           />
         </mesh>
 

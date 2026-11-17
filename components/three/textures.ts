@@ -37,17 +37,17 @@ export const SCREEN_THEME_DARK: ScreenTheme = {
 };
 
 export const SCREEN_THEME_LIGHT: ScreenTheme = {
-  bg: ["#ffffff", "#f8fcef", "#eef5e2"],
-  grid: "rgba(143,183,29,0.22)",
-  halo: ["rgba(202,242,75,0.28)", "rgba(143,183,29,0.10)"],
-  bar: "rgba(255,255,255,0.95)",
+  bg: ["#ffffff", "#fbfff2", "#f1f8e4"],
+  grid: "rgba(143,183,29,0.20)",
+  halo: ["rgba(202,242,75,0.35)", "rgba(143,183,29,0.12)"],
+  bar: "rgba(255,255,255,0.96)",
   barText: "rgba(11,11,12,0.62)",
-  mb: ["#7fae12", "#5f8a00", "#3f6b00"],
-  mbGlow: "rgba(95,138,0,0.45)",
+  mb: ["#c6f24a", "#9bc41a", "#5f8a00"],
+  mbGlow: "rgba(154,196,26,0.85)",
   name: "#0b0b0c",
-  role: "#3a3a40",
-  log: "#3a3a40",
-  logAccent: "#3f6b00",
+  role: "#2f2f34",
+  log: "#2f2f34",
+  logAccent: "#4f7a00",
   scan: "rgba(143,183,29,0.10)",
 };
 
