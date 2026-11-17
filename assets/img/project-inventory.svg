@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Mockup de sistema de inventario">
+  <defs>
+    <linearGradient id="inv-lime" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#DAFA7A"/><stop offset="1" stop-color="#BCE93A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#F4F4F1"/>
+  <circle cx="170" cy="140" r="170" fill="#EDF7D2" opacity="0.75"/>
+  <circle cx="1050" cy="690" r="150" fill="#E9E9E4" opacity="0.8"/>
+
+  <rect x="150" y="100" width="900" height="600" rx="18" fill="#0E0E10" opacity="0.10"/>
+  <rect x="140" y="88" width="900" height="600" rx="18" fill="#FFFFFF"/>
+  <rect x="140" y="88" width="900" height="46" rx="18" fill="#FAFAF8"/>
+  <rect x="140" y="116" width="900" height="18" fill="#FAFAF8"/>
+  <line x1="140" y1="134" x2="1040" y2="134" stroke="#E9E9E3"/>
+  <circle cx="170" cy="111" r="5" fill="#D9D9D3"/><circle cx="188" cy="111" r="5" fill="#D9D9D3"/><circle cx="206" cy="111" r="5" fill="#CAF24B"/>
+
+  <!-- Header de tabla -->
+  <rect x="176" y="166" width="220" height="20" rx="10" fill="#0B0B0C"/>
+  <rect x="176" y="198" width="150" height="11" rx="5.5" fill="#DADAD4"/>
+  <rect x="852" y="168" width="152" height="40" rx="10" fill="#0B0B0C"/>
+  <rect x="874" y="184" width="76" height="9" rx="4.5" fill="#CAF24B"/>
+
+  <!-- Buscador -->
+  <rect x="176" y="238" width="360" height="40" rx="10" fill="#FAFAF8" stroke="#EDEDE8"/>
+  <circle cx="200" cy="258" r="7" fill="none" stroke="#C9C9C3" stroke-width="2"/>
+  <line x1="205" y1="263" x2="212" y2="270" stroke="#C9C9C3" stroke-width="2" stroke-linecap="round"/>
+  <rect x="226" y="253" width="120" height="10" rx="5" fill="#E0E0DA"/>
+
+  <!-- Filtros -->
+  <rect x="560" y="238" width="120" height="40" rx="10" fill="#FAFAF8" stroke="#EDEDE8"/>
+  <rect x="580" y="253" width="60" height="10" rx="5" fill="#DADAD4"/>
+  <rect x="700" y="238" width="140" height="40" rx="10" fill="#FAFAF8" stroke="#EDEDE8"/>
+  <rect x="720" y="253" width="72" height="10" rx="5" fill="#DADAD4"/>
+
+  <!-- Tabla -->
+  <rect x="176" y="306" width="828" height="334" rx="14" fill="#FFFFFF" stroke="#EDEDE8"/>
+  <rect x="176" y="306" width="828" height="44" rx="14" fill="#FAFAF8"/>
+  <rect x="176" y="336" width="828" height="14" fill="#FAFAF8"/>
+  <line x1="176" y1="350" x2="1004" y2="350" stroke="#EDEDE8"/>
+  <g fill="#B9B9B2">
+    <rect x="200" y="322" width="80" height="9" rx="4.5"/>
+    <rect x="420" y="322" width="70" height="9" rx="4.5"/>
+    <rect x="620" y="322" width="60" height="9" rx="4.5"/>
+    <rect x="800" y="322" width="60" height="9" rx="4.5"/>
+  </g>
+
+  <!-- Filas -->
+  <g>
+    <rect x="200" y="380" width="140" height="10" rx="5" fill="#0B0B0C"/>
+    <rect x="420" y="380" width="90" height="10" rx="5" fill="#DADAD4"/>
+    <rect x="620" y="378" width="120" height="14" rx="7" fill="#E7E7E1"/>
+    <rect x="620" y="378" width="86" height="14" rx="7" fill="url(#inv-lime)"/>
+    <rect x="800" y="376" width="70" height="16" rx="8" fill="#0B0B0C" opacity="0.06"/>
+    <rect x="812" y="380" width="46" height="8" rx="4" fill="#3E7D2E"/>
+    <line x1="200" y1="418" x2="980" y2="418" stroke="#F1F1EC"/>
+  </g>
+  <g>
+    <rect x="200" y="446" width="120" height="10" rx="5" fill="#0B0B0C"/>
+    <rect x="420" y="446" width="100" height="10" rx="5" fill="#DADAD4"/>
+    <rect x="620" y="444" width="120" height="14" rx="7" fill="#E7E7E1"/>
+    <rect x="620" y="444" width="42" height="14" rx="7" fill="#BCE93A"/>
+    <rect x="800" y="442" width="70" height="16" rx="8" fill="#E7F0D0"/>
+    <rect x="812" y="446" width="46" height="8" rx="4" fill="#5C7A1E"/>
+    <line x1="200" y1="484" x2="980" y2="484" stroke="#F1F1EC"/>
+  </g>
+  <g>
+    <rect x="200" y="512" width="150" height="10" rx="5" fill="#0B0B0C"/>
+    <rect x="420" y="512" width="80" height="10" rx="5" fill="#DADAD4"/>
+    <rect x="620" y="510" width="120" height="14" rx="7" fill="#E7E7E1"/>
+    <rect x="620" y="510" width="104" height="14" rx="7" fill="url(#inv-lime)"/>
+    <rect x="800" y="508" width="70" height="16" rx="8" fill="#FBE3E0"/>
+    <rect x="812" y="512" width="46" height="8" rx="4" fill="#C0453A"/>
+    <line x1="200" y1="550" x2="980" y2="550" stroke="#F1F1EC"/>
+  </g>
+  <g>
+    <rect x="200" y="578" width="130" height="10" rx="5" fill="#0B0B0C"/>
+    <rect x="420" y="578" width="96" height="10" rx="5" fill="#DADAD4"/>
+    <rect x="620" y="576" width="120" height="14" rx="7" fill="#E7E7E1"/>
+    <rect x="620" y="576" width="70" height="14" rx="7" fill="url(#inv-lime)"/>
+    <rect x="800" y="574" width="70" height="16" rx="8" fill="#E7F0D0"/>
+    <rect x="812" y="578" width="46" height="8" rx="4" fill="#5C7A1E"/>
+  </g>
+
+  <!-- Alerta flotante -->
+  <rect x="700" y="612" width="300" height="58" rx="14" fill="#0B0B0C"/>
+  <circle cx="732" cy="641" r="12" fill="#CAF24B"/>
+  <path d="M728 641l3 3 5-6" stroke="#0B0B0C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="758" y="628" width="130" height="9" rx="4.5" fill="#F2F2EF"/>
+  <rect x="758" y="646" width="90" height="8" rx="4" fill="#6E6E68"/>
+</svg>

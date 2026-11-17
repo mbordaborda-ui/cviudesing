@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Mockup de flujo de automatización">
+  <defs>
+    <linearGradient id="au-lime" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DAFA7A"/><stop offset="1" stop-color="#BCE93A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#F4F4F1"/>
+  <circle cx="1050" cy="160" r="170" fill="#EDF7D2" opacity="0.7"/>
+  <circle cx="140" cy="680" r="150" fill="#E9E9E4" opacity="0.8"/>
+
+  <rect x="150" y="86" width="900" height="620" rx="18" fill="#0E0E10" opacity="0.10"/>
+  <rect x="140" y="74" width="900" height="620" rx="18" fill="#FFFFFF"/>
+  <rect x="140" y="74" width="900" height="46" rx="18" fill="#FAFAF8"/>
+  <rect x="140" y="102" width="900" height="18" fill="#FAFAF8"/>
+  <line x1="140" y1="120" x2="1040" y2="120" stroke="#E9E9E3"/>
+  <circle cx="170" cy="97" r="5" fill="#D9D9D3"/><circle cx="188" cy="97" r="5" fill="#D9D9D3"/><circle cx="206" cy="97" r="5" fill="#CAF24B"/>
+  <rect x="176" y="146" width="180" height="16" rx="8" fill="#0B0B0C"/>
+  <rect x="860" y="142" width="144" height="30" rx="8" fill="url(#au-lime)"/>
+  <rect x="884" y="152" width="96" height="10" rx="5" fill="#0B0B0C" opacity="0.7"/>
+
+  <!-- Conectores -->
+  <g stroke="#DADAD4" stroke-width="2" fill="none">
+    <path d="M330 288 C 380 288, 380 288, 430 288" />
+    <path d="M620 288 C 670 288, 670 288, 720 288" />
+    <path d="M430 356 L 430 430" />
+    <path d="M430 430 L 720 430" />
+    <path d="M720 288 L 720 430" />
+    <path d="M720 430 L 720 500" />
+  </g>
+
+  <!-- Nodo 1: trigger -->
+  <rect x="200" y="228" width="130" height="120" rx="14" fill="#FFFFFF" stroke="#EDEDE8"/>
+  <rect x="222" y="248" width="40" height="40" rx="10" fill="#0B0B0C"/>
+  <path d="M236 268l10-8v16z" fill="#CAF24B"/>
+  <rect x="222" y="302" width="86" height="9" rx="4.5" fill="#0B0B0C"/>
+  <rect x="222" y="320" width="60" height="8" rx="4" fill="#DADAD4"/>
+  <circle cx="200" cy="288" r="6" fill="#CAF24B"/>
+
+  <!-- Nodo 2: process -->
+  <rect x="430" y="228" width="190" height="120" rx="14" fill="#0B0B0C"/>
+  <rect x="454" y="248" width="40" height="40" rx="10" fill="#202024"/>
+  <path d="M464 268h20M464 276h20M464 284h12" stroke="#CAF24B" stroke-width="2.4" stroke-linecap="round"/>
+  <rect x="454" y="302" width="120" height="9" rx="4.5" fill="#F2F2EF"/>
+  <rect x="454" y="320" width="80" height="8" rx="4" fill="#6E6E68"/>
+
+  <!-- Nodo 3: action -->
+  <rect x="720" y="228" width="140" height="120" rx="14" fill="#FFFFFF" stroke="#EDEDE8"/>
+  <rect x="742" y="248" width="40" height="40" rx="10" fill="url(#au-lime)"/>
+  <path d="M756 274l6-14 6 14z" fill="#0B0B0C"/><rect x="760" y="274" width="2" height="10" fill="#0B0B0C"/>
+  <rect x="742" y="302" width="90" height="9" rx="4.5" fill="#0B0B0C"/>
+  <rect x="742" y="320" width="64" height="8" rx="4" fill="#DADAD4"/>
+
+  <!-- Nodo 4: salida -->
+  <rect x="620" y="500" width="200" height="120" rx="14" fill="#FFFFFF" stroke="#EDEDE8"/>
+  <rect x="644" y="520" width="40" height="40" rx="10" fill="#EDF7D2"/>
+  <path d="M658 540l5 5 9-11" stroke="#3E7D2E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="644" y="574" width="130" height="9" rx="4.5" fill="#0B0B0C"/>
+  <rect x="644" y="592" width="90" height="8" rx="4" fill="#DADAD4"/>
+
+  <!-- Badge lateral de estado -->
+  <rect x="882" y="500" width="122" height="120" rx="14" fill="#FAFAF8" stroke="#EDEDE8"/>
+  <rect x="904" y="522" width="70" height="9" rx="4.5" fill="#B9B9B2"/>
+  <rect x="904" y="544" width="46" height="26" rx="7" fill="#0B0B0C"/>
+  <rect x="904" y="586" width="78" height="8" rx="4" fill="#DADAD4"/>
+  <rect x="904" y="602" width="56" height="8" rx="4" fill="#EDEDE8"/>
+
+  <!-- Chips flotantes de integración -->
+  <rect x="200" y="500" width="150" height="46" rx="12" fill="#FFFFFF" stroke="#EDEDE8"/>
+  <circle cx="224" cy="523" r="10" fill="#0B0B0C"/><rect x="244" y="518" width="84" height="9" rx="4.5" fill="#DADAD4"/>
+  <rect x="200" y="560" width="150" height="46" rx="12" fill="#FFFFFF" stroke="#EDEDE8"/>
+  <circle cx="224" cy="583" r="10" fill="url(#au-lime)"/><rect x="244" y="578" width="70" height="9" rx="4.5" fill="#DADAD4"/>
+
+  <!-- Progreso -->
+  <rect x="200" y="640" width="804" height="10" rx="5" fill="#EDEDE8"/>
+  <rect x="200" y="640" width="520" height="10" rx="5" fill="url(#au-lime)"/>
+</svg>
