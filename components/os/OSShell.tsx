@@ -11,6 +11,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { certifications, profile, projects, skills } from "@/content/cv";
 import { cn } from "@/lib/format";
 import { modalLayer } from "@/lib/modal-layer";
+import { BootSequence } from "./BootSequence";
 import { Mascot } from "./Mascot";
 import { ModuleContent } from "./Modules";
 import { MODULES, type ModuleId } from "./modules-data";
@@ -149,7 +150,12 @@ export function OSShell({ onExit }: { onExit: () => void }) {
       </div>
 
       {/* Barra de sistema */}
-      <header className="relative z-30 flex items-center gap-3 border-b border-white/8 bg-[#05070d]/70 px-3 py-2 backdrop-blur-xl sm:px-4">
+      <motion.header
+        initial={{ y: -14, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-30 flex items-center gap-3 border-b border-white/8 bg-[#05070d]/70 px-3 py-2 backdrop-blur-xl sm:px-4"
+      >
         <div className="flex items-center gap-2.5">
           <span className="grid size-7 place-items-center rounded-lg border border-white/10 bg-white/5 font-mono text-[9px] font-semibold tracking-widest text-cyan">
             MB
@@ -191,12 +197,15 @@ export function OSShell({ onExit }: { onExit: () => void }) {
           <Power className="size-3" aria-hidden="true" />
           <span className="hidden sm:inline">Salir</span>
         </button>
-      </header>
+      </motion.header>
 
       <div className="relative z-10 flex min-h-0 flex-1">
         {/* Dock escritorio */}
-        <aside
+        <motion.aside
           aria-label="Módulos del portafolio"
+          initial={{ x: -24, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="hidden w-[88px] shrink-0 flex-col items-center gap-1 border-r border-white/6 bg-[#05070d]/40 py-3 md:flex"
         >
           {MODULES.map((module) => {
@@ -240,10 +249,29 @@ export function OSShell({ onExit }: { onExit: () => void }) {
             <span>v1.0</span>
             <span>2026</span>
           </div>
-        </aside>
+        </motion.aside>
 
         {/* Contenido */}
-        <div className="relative min-h-0 flex-1">
+        <div
+          className="relative min-h-0 flex-1"
+          onMouseMove={(event) => {
+            const rect = event.currentTarget.getBoundingClientRect();
+            event.currentTarget.style.setProperty(
+              "--mx",
+              `${event.clientX - rect.left}px`,
+            );
+            event.currentTarget.style.setProperty(
+              "--my",
+              `${event.clientY - rect.top}px`,
+            );
+          }}
+        >
+          <div className="os-glow pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
+          <div
+            key={active ?? "home"}
+            className="sweep pointer-events-none absolute inset-y-0 left-0 z-10 w-1/3 bg-gradient-to-r from-transparent via-cyan/[0.07] to-transparent"
+            aria-hidden="true"
+          />
           <div
             ref={scrollBar}
             className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-cyan via-electric to-violet"
@@ -282,6 +310,13 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                         <p className="mt-1 max-w-xl text-[12px] text-muted">
                           {current.hint}
                         </p>
+                        <motion.span
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                          className="mt-3 block h-px w-28 origin-left bg-gradient-to-r from-cyan via-electric to-transparent"
+                          aria-hidden="true"
+                        />
                       </div>
                     </div>
 
@@ -295,7 +330,9 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                     </button>
                   </div>
 
-                  <ModuleContent id={active} />
+                  <div className="hud-corners relative rounded-2xl border border-white/[0.06] bg-[#070b14]/40 p-3 sm:p-5">
+                    <ModuleContent id={active} />
+                  </div>
                 </motion.div>
               ) : (
                 <motion.div
@@ -451,6 +488,7 @@ export function OSShell({ onExit }: { onExit: () => void }) {
       </nav>
 
       <Mascot onOpenContact={() => setActive("contact")} />
+      <BootSequence />
 
       <p className="sr-only" role="status" aria-live="polite">
         {current ? `Módulo ${current.index}: ${current.label}` : "Menú principal"}

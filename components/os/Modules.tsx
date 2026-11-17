@@ -25,6 +25,7 @@ import {
 import { cn, formatMonth, formatRange } from "@/lib/format";
 import { setModalOpen } from "@/lib/modal-layer";
 import { Stagger, StaggerItem, tiltMove, tiltReset } from "./motion";
+import { Reveal } from "./Reveal";
 import type { ModuleId } from "./modules-data";
 
 /* ------------------------------------------------------------------ */
@@ -398,17 +399,14 @@ function ProjectsModule() {
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {projects.map((project, index) => (
-          <motion.button
-            key={project.id}
-            type="button"
-            onClick={() => setOpenId(project.id)}
-            onMouseMove={(event) => tiltMove(event, 6)}
-            onMouseLeave={tiltReset}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.04 }}
-            className="spotlight tilt sheen group rounded-2xl border border-white/8 bg-white/[0.03] p-3 text-left transition-colors duration-300 hover:border-cyan/30"
-          >
+          <Reveal key={project.id} delay={Math.min(index * 0.05, 0.3)} className="h-full">
+            <button
+              type="button"
+              onClick={() => setOpenId(project.id)}
+              onMouseMove={(event) => tiltMove(event, 6)}
+              onMouseLeave={tiltReset}
+              className="spotlight tilt sheen group h-full w-full rounded-2xl border border-white/8 bg-white/[0.03] p-3 text-left transition-colors duration-300 hover:border-cyan/30"
+            >
             <ProjectPreview project={project} />
             <div className="mt-3 flex items-start justify-between gap-2">
               <div>
@@ -438,7 +436,8 @@ function ProjectsModule() {
                 </span>
               )}
             </div>
-          </motion.button>
+            </button>
+          </Reveal>
         ))}
       </div>
 
@@ -631,7 +630,7 @@ function EducationModule() {
 
         <Stagger className="mt-3 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
           {certifications.map((cert, index) => (
-            <StaggerItem key={cert.id} className="h-full">
+            <Reveal key={cert.id} delay={Math.min(index * 0.04, 0.3)} className="h-full">
               <article
                 onMouseMove={(event) => tiltMove(event, 7)}
                 onMouseLeave={tiltReset}
@@ -663,7 +662,7 @@ function EducationModule() {
                 <ArrowUpRight className="size-3" aria-hidden="true" />
               </a>
               </article>
-            </StaggerItem>
+            </Reveal>
           ))}
         </Stagger>
       </section>
