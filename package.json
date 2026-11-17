@@ -1,0 +1,33 @@
+{
+  "name": "enter-miguels-world",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portafolio interactivo 3D de Miguel Borda — Desarrollador de Software Full Stack",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "lucide-react": "^1.74.0",
+    "motion": "^14.14.0",
+    "next": "^16.4.6",
+    "react": "^19.2.9",
+    "react-dom": "^19.2.9",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/three": "^0.187.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.9.3"
+  }
+}
