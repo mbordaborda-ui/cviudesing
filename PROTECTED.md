@@ -61,3 +61,22 @@ git diff portatil-original HEAD -- components/three
 ```
 
 Debe salir **vacío**. Si no lo está, alguien modificó el portátil.
+
+## Uso en el sitio estático (PROYECTMIGUELBORDA)
+
+El portátil original se compila como bundle y se embebe en el CV estático:
+
+```bash
+npm run build:embed
+```
+
+Genera `../PROYECTMIGUELBORDA/assets/js/laptop-3d.js` a partir de
+`embed/laptop-embed.tsx`, que **solo monta** `LaptopScene` (sin duplicar ni
+redeclarar el modelo). El sitio estático lo carga con `defer` y llama a
+`window.MiguelLaptop.mount(...)` / `.enter()`.
+
+Reglas:
+- No modificar `embed/laptop-embed.tsx` para cambiar el diseño; solo monta.
+- Si se toca el portátil (solo con autorización), hay que **recompilar** el bundle.
+- El sitio estático mantiene su paleta blanco/verde; el 3D va con fondo
+  transparente sobre ella.
