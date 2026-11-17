@@ -101,7 +101,7 @@ export function Experience() {
             <div className="stage-noise" aria-hidden="true" />
             <div className="vignette" aria-hidden="true" />
             <p className="sr-only" aria-live="polite">
-              {entering ? "Abriendo el sistema de Miguel Borda" : ""}
+              {entering ? "Abriendo el portafolio de Miguel Borda" : ""}
             </p>
           </>
         ) : (

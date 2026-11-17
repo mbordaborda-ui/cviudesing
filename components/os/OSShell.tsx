@@ -8,18 +8,29 @@ import {
   Power,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { certifications, profile, projects } from "@/content/cv";
+import { certifications, profile, projects, skills } from "@/content/cv";
 import { cn } from "@/lib/format";
 import { modalLayer } from "@/lib/modal-layer";
 import { Mascot } from "./Mascot";
 import { ModuleContent } from "./Modules";
 import { MODULES, type ModuleId } from "./modules-data";
+import { spaceVariants, tiltMove, tiltReset } from "./motion";
 
 export function OSShell({ onExit }: { onExit: () => void }) {
   const [active, setActive] = useState<ModuleId | null>(null);
   const [clock, setClock] = useState("");
   const mainRef = useRef<HTMLElement>(null);
+  const scrollBar = useRef<HTMLDivElement>(null);
   const previous = useRef<ModuleId | null>(null);
+
+  const handleScroll = (event: React.UIEvent<HTMLElement>) => {
+    const element = event.currentTarget;
+    const max = element.scrollHeight - element.clientHeight;
+    const ratio = max > 0 ? element.scrollTop / max : 0;
+    if (scrollBar.current) {
+      scrollBar.current.style.transform = `scaleX(${ratio})`;
+    }
+  };
 
   useEffect(() => {
     const tick = () => {
@@ -69,6 +80,7 @@ export function OSShell({ onExit }: { onExit: () => void }) {
     if (active) {
       previous.current = active;
       mainRef.current?.focus();
+      mainRef.current?.scrollTo({ top: 0 });
       return;
     }
     const last = previous.current;
@@ -84,6 +96,57 @@ export function OSShell({ onExit }: { onExit: () => void }) {
     <div className="relative flex h-dvh flex-col overflow-hidden bg-void">
       <div className="stage-bg" aria-hidden="true" />
       <div className="stage-grid opacity-30" aria-hidden="true" />
+
+      {/* Ambiente animado del sistema */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <span
+          className="aurora-blob"
+          style={{
+            width: 460,
+            height: 460,
+            left: "4%",
+            top: "6%",
+            background: "rgba(61,110,255,0.22)",
+          }}
+        />
+        <span
+          className="aurora-blob"
+          style={{
+            width: 380,
+            height: 380,
+            right: "4%",
+            top: "34%",
+            background: "rgba(139,92,246,0.18)",
+            animationDelay: "-7s",
+          }}
+        />
+        <span
+          className="aurora-blob"
+          style={{
+            width: 500,
+            height: 500,
+            left: "36%",
+            bottom: "-22%",
+            background: "rgba(53,227,255,0.14)",
+            animationDelay: "-13s",
+          }}
+        />
+        <div
+          className="grid-drift absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(233,238,249,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(233,238,249,0.06) 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
+            maskImage:
+              "radial-gradient(circle at 50% 40%, #000 0%, transparent 75%)",
+            WebkitMaskImage:
+              "radial-gradient(circle at 50% 40%, #000 0%, transparent 75%)",
+          }}
+        />
+      </div>
 
       {/* Barra de sistema */}
       <header className="relative z-30 flex items-center gap-3 border-b border-white/8 bg-[#05070d]/70 px-3 py-2 backdrop-blur-xl sm:px-4">
@@ -154,7 +217,11 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                     : "text-muted hover:bg-white/[0.04] hover:text-ink",
                 )}
               >
-                <Icon className="size-[18px]" aria-hidden="true" strokeWidth={1.7} />
+                <Icon
+                  className="size-[18px] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110"
+                  aria-hidden="true"
+                  strokeWidth={1.7}
+                />
                 <span className="font-mono text-[8px] uppercase tracking-[0.08em]">
                   {module.short}
                 </span>
@@ -176,32 +243,46 @@ export function OSShell({ onExit }: { onExit: () => void }) {
         </aside>
 
         {/* Contenido */}
-        <main
-          ref={mainRef}
-          tabIndex={-1}
-          className="relative min-h-0 flex-1 overflow-y-auto scroll-slim px-4 pb-28 pt-4 outline-none sm:px-6 md:pb-6"
-        >
+        <div className="relative min-h-0 flex-1">
+          <div
+            ref={scrollBar}
+            className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-cyan via-electric to-violet"
+            aria-hidden="true"
+          />
+          <main
+            ref={mainRef}
+            tabIndex={-1}
+            onScroll={handleScroll}
+            className="relative h-full overflow-y-auto scroll-slim px-4 pb-28 pt-4 outline-none sm:px-6 md:pb-6"
+          >
           <div className="mx-auto w-full max-w-6xl">
             <AnimatePresence mode="popLayout" initial={false}>
               {active && current ? (
                 <motion.div
                   key={active}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  variants={spaceVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  style={{ transformPerspective: 1200, transformOrigin: "top center" }}
                 >
                   <div className="mb-5 flex flex-wrap items-end justify-between gap-3 border-b border-white/8 pb-4">
-                    <div>
-                      <p className="font-mono text-[10px] text-cyan/80">
-                        {current.index} — {current.short.toUpperCase()}
-                      </p>
-                      <h1 className="display mt-1.5 text-2xl font-semibold text-ink sm:text-3xl">
-                        {current.label}
-                      </h1>
-                      <p className="mt-1 max-w-xl text-[12px] text-muted">
-                        {current.hint}
-                      </p>
+                    <div className="flex items-start gap-3">
+                      <span className="relative mt-0.5 grid size-11 shrink-0 place-items-center rounded-xl border border-cyan/20 bg-cyan/[0.06] text-cyan">
+                        <current.icon className="size-5" strokeWidth={1.6} aria-hidden="true" />
+                        <span className="absolute -right-1 -top-1 size-2 rounded-full bg-cyan pulse-dot" />
+                      </span>
+                      <div>
+                        <p className="font-mono text-[10px] text-cyan/80">
+                          {current.index} — {current.short.toUpperCase()}
+                        </p>
+                        <h1 className="display mt-1 text-2xl font-semibold text-ink sm:text-3xl">
+                          {current.label}
+                        </h1>
+                        <p className="mt-1 max-w-xl text-[12px] text-muted">
+                          {current.hint}
+                        </p>
+                      </div>
                     </div>
 
                     <button
@@ -219,10 +300,11 @@ export function OSShell({ onExit }: { onExit: () => void }) {
               ) : (
                 <motion.div
                   key="home"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  variants={spaceVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  style={{ transformPerspective: 1200, transformOrigin: "top center" }}
                 >
                   <div className="flex flex-wrap items-end justify-between gap-4 pb-5">
                     <div>
@@ -253,17 +335,8 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                           key={module.id}
                           type="button"
                           onClick={() => open(module.id)}
-                          onMouseMove={(event) => {
-                            const rect = event.currentTarget.getBoundingClientRect();
-                            event.currentTarget.style.setProperty(
-                              "--mx",
-                              `${event.clientX - rect.left}px`,
-                            );
-                            event.currentTarget.style.setProperty(
-                              "--my",
-                              `${event.clientY - rect.top}px`,
-                            );
-                          }}
+                          onMouseMove={(event) => tiltMove(event, 6)}
+                          onMouseLeave={tiltReset}
                           initial={{ opacity: 0, y: 14 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{
@@ -271,13 +344,17 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                             delay: index * 0.045,
                             ease: [0.16, 1, 0.3, 1],
                           }}
-                          className="spotlight edge-glow group relative rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-left transition-colors duration-300 hover:border-cyan/25 hover:bg-white/[0.05]"
+                          className="spotlight edge-glow sheen tilt group relative rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-left transition-colors duration-300 hover:border-cyan/25 hover:bg-white/[0.05]"
                         >
                           <div className="flex items-start justify-between">
-                            <span className="grid size-9 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-cyan/90">
-                              <Icon className="size-[18px]" strokeWidth={1.6} aria-hidden="true" />
+                            <span className="grid size-9 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-cyan/90 transition-colors duration-300 group-hover:border-cyan/30 group-hover:bg-cyan/10">
+                              <Icon
+                                className="size-[18px] transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
+                                strokeWidth={1.6}
+                                aria-hidden="true"
+                              />
                             </span>
-                            <span className="font-mono text-[10px] text-muted/60">
+                            <span className="font-mono text-[10px] text-muted/60 transition-colors group-hover:text-cyan/70">
                               {module.index}
                             </span>
                           </div>
@@ -314,11 +391,31 @@ export function OSShell({ onExit }: { onExit: () => void }) {
                       </div>
                     ))}
                   </div>
+
+                  {/* Cinta de stack en movimiento */}
+                  <div className="relative mt-4 overflow-hidden rounded-xl border border-white/8 bg-white/[0.02] py-2">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#060910] to-transparent" />
+                    <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#060910] to-transparent" />
+                    <div className="marquee-track flex w-max items-center gap-5 whitespace-nowrap px-4">
+                      {[...skills.flatMap((category) => category.items), "React Three Fiber", "Motion", "Next.js"].map(
+                        (item, index) => (
+                          <span
+                            key={`${item}-${index}`}
+                            className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.18em] text-muted/70"
+                          >
+                            <span className="size-1 rounded-full bg-cyan/50" />
+                            {item}
+                          </span>
+                        ),
+                      )}
+                    </div>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-        </main>
+          </main>
+        </div>
       </div>
 
       {/* Dock móvil */}

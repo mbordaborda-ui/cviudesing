@@ -47,7 +47,7 @@ export function StageOverlay({ entering, onEnter }: StageOverlayProps) {
           document.getElementById("enter-world")?.focus();
         }}
       >
-        Saltar a entrar al portafolio
+        Saltar al botón Ver portafolio
       </a>
 
       <div className="flex flex-1 items-start px-6 pt-[13vh] sm:pt-[15vh] lg:items-center lg:pt-0 lg:pb-16 lg:pl-10">
@@ -69,7 +69,7 @@ export function StageOverlay({ entering, onEnter }: StageOverlayProps) {
           >
             MIGUEL
             <br />
-            <span className="bg-gradient-to-r from-cyan via-electric to-violet bg-clip-text pb-2 text-transparent">
+            <span className="bg-gradient-to-r from-cyan via-electric to-violet bg-clip-text pb-2 text-transparent text-shimmer">
               BORDA
             </span>
           </motion.h1>
@@ -105,7 +105,7 @@ export function StageOverlay({ entering, onEnter }: StageOverlayProps) {
               disabled={entering}
               className="group pointer-events-auto inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[13px] font-semibold tracking-wide text-void transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white disabled:opacity-60 sm:px-7"
             >
-              ENTRAR A MI UNIVERSO
+              VER PORTAFOLIO
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden="true"

@@ -24,6 +24,7 @@ import {
 } from "@/content/cv";
 import { cn, formatMonth, formatRange } from "@/lib/format";
 import { setModalOpen } from "@/lib/modal-layer";
+import { Stagger, StaggerItem, tiltMove, tiltReset } from "./motion";
 import type { ModuleId } from "./modules-data";
 
 /* ------------------------------------------------------------------ */
@@ -112,7 +113,9 @@ function AboutModule() {
       <motion.section {...cardMotion}>
         <p className="kicker">Perfil</p>
         <h2 className="display mt-3 text-2xl font-semibold text-ink sm:text-3xl">
-          {about.headline}
+          <span className="bg-gradient-to-r from-ink via-cyan/90 to-ink bg-clip-text text-transparent text-shimmer">
+            {about.headline}
+          </span>
         </h2>
         <div className="mt-4 space-y-3 text-[13.5px] leading-relaxed text-ink/70">
           {about.paragraphs.map((paragraph) => (
@@ -139,31 +142,27 @@ function AboutModule() {
         )}
       </motion.section>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <Stagger className="grid gap-3 sm:grid-cols-2">
         {about.strengths.map((strength, index) => (
-          <motion.article
-            key={strength.title}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.45,
-              delay: 0.08 + index * 0.07,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="spotlight glass flex flex-col justify-between rounded-2xl p-4"
-          >
-            <span className="font-mono text-[10px] text-cyan/70">
-              0{index + 1}
-            </span>
-            <h3 className="mt-6 font-display text-[15px] font-semibold text-ink">
-              {strength.title}
-            </h3>
-            <p className="mt-2 text-[12px] leading-relaxed text-muted">
-              {strength.body}
-            </p>
-          </motion.article>
+          <StaggerItem key={strength.title} className="h-full">
+            <article
+              onMouseMove={(event) => tiltMove(event, 8)}
+              onMouseLeave={tiltReset}
+              className="spotlight glass tilt sheen flex h-full flex-col justify-between rounded-2xl p-4"
+            >
+              <span className="font-mono text-[10px] text-cyan/70">
+                0{index + 1}
+              </span>
+              <h3 className="mt-6 font-display text-[15px] font-semibold text-ink">
+                {strength.title}
+              </h3>
+              <p className="mt-2 text-[12px] leading-relaxed text-muted">
+                {strength.body}
+              </p>
+            </article>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </div>
   );
 }
@@ -229,6 +228,7 @@ function StackModule() {
                 key={item}
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
+                whileHover={{ y: -3, scale: 1.02 }}
                 transition={{ duration: 0.3, delay: index * 0.02 }}
                 className="group flex items-center gap-2 rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2.5 transition-colors duration-300 hover:border-cyan/30 hover:bg-cyan/[0.06]"
               >
@@ -255,8 +255,11 @@ function StackModule() {
 function ExperienceModule() {
   return (
     <div className="relative">
-      <div
-        className="absolute bottom-2 left-[7px] top-2 w-px bg-gradient-to-b from-cyan/40 via-white/10 to-transparent"
+      <motion.div
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+        className="absolute bottom-2 left-[7px] top-2 w-px origin-top bg-gradient-to-b from-cyan/60 via-white/15 to-transparent"
         aria-hidden="true"
       />
 
@@ -268,13 +271,17 @@ function ExperienceModule() {
           className="relative pl-8"
         >
           <span
-            className="absolute left-0 top-1.5 grid size-3.5 place-items-center rounded-full border border-cyan/50 bg-void"
+            className="node-pulse absolute left-0 top-1.5 grid size-3.5 place-items-center rounded-full border border-cyan/50 bg-void"
             aria-hidden="true"
           >
-            <span className="size-1.5 rounded-full bg-cyan pulse-dot" />
+            <span className="size-1.5 rounded-full bg-cyan" />
           </span>
 
-          <div className="glass rounded-2xl p-5">
+          <div
+            onMouseMove={(event) => tiltMove(event, 3)}
+            onMouseLeave={tiltReset}
+            className="glass tilt sheen rounded-2xl p-5"
+          >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h3 className="font-display text-lg font-semibold text-ink">
@@ -395,10 +402,12 @@ function ProjectsModule() {
             key={project.id}
             type="button"
             onClick={() => setOpenId(project.id)}
+            onMouseMove={(event) => tiltMove(event, 6)}
+            onMouseLeave={tiltReset}
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.04 }}
-            className="spotlight group rounded-2xl border border-white/8 bg-white/[0.03] p-3 text-left transition-colors duration-300 hover:border-cyan/30"
+            className="spotlight tilt sheen group rounded-2xl border border-white/8 bg-white/[0.03] p-3 text-left transition-colors duration-300 hover:border-cyan/30"
           >
             <ProjectPreview project={project} />
             <div className="mt-3 flex items-start justify-between gap-2">
@@ -468,7 +477,12 @@ function ProjectsModule() {
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto scroll-slim px-5 py-5">
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: 0.06 }}
+                className="flex-1 overflow-y-auto scroll-slim px-5 py-5"
+              >
                 <ProjectPreview project={openProject} />
 
                 <h2
@@ -556,7 +570,7 @@ function ProjectsModule() {
                     </span>
                   )}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </>
         )}
@@ -615,14 +629,14 @@ function EducationModule() {
           </span>
         </div>
 
-        <div className="mt-3 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-          {certifications.map((cert, index) => (            <motion.article
-              key={cert.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.03 }}
-              className="spotlight group flex flex-col justify-between rounded-xl border border-white/8 bg-white/[0.03] p-3.5"
-            >
+        <Stagger className="mt-3 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+          {certifications.map((cert, index) => (
+            <StaggerItem key={cert.id} className="h-full">
+              <article
+                onMouseMove={(event) => tiltMove(event, 7)}
+                onMouseLeave={tiltReset}
+                className="spotlight tilt sheen group flex h-full flex-col justify-between rounded-xl border border-white/8 bg-white/[0.03] p-3.5"
+              >
               <div>
                 <span className="grid size-7 place-items-center rounded-lg border border-cyan/20 bg-cyan/[0.08] font-mono text-[9px] text-cyan">
                   {String(index + 1).padStart(2, "0")}
@@ -648,9 +662,10 @@ function EducationModule() {
                 Ver credencial
                 <ArrowUpRight className="size-3" aria-hidden="true" />
               </a>
-            </motion.article>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
     </div>
   );
@@ -662,6 +677,19 @@ function EducationModule() {
 
 function ContactModule() {
   const [copied, setCopied] = useState(false);
+  const [step, setStep] = useState(0);
+
+  // Secuencia de terminal: las líneas aparecen una a una.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setStep(4);
+      return;
+    }
+    const timer = window.setInterval(() => {
+      setStep((value) => (value < 4 ? value + 1 : value));
+    }, 380);
+    return () => window.clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (!copied) return;
@@ -691,25 +719,48 @@ function ContactModule() {
         </div>
 
         <div className="space-y-4 px-4 py-4 font-mono text-[11.5px] leading-relaxed">
-          <p>
-            <span className="text-cyan">$</span>{" "}
-            <span className="text-ink/80">whoami</span>
-          </p>
-          <p className="text-muted">
-            {profile.name} — {profile.role}
-          </p>
+          {step >= 1 && (
+            <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+              <span className="text-cyan">$</span>{" "}
+              <span className="text-ink/80">whoami</span>
+            </motion.p>
+          )}
 
-          <p>
-            <span className="text-cyan">$</span>{" "}
-            <span className="text-ink/80">cat contacto.json</span>
-          </p>
-          <pre className="overflow-x-auto rounded-lg border border-white/8 bg-void/60 p-3 text-[10.5px] text-muted">
+          {step >= 2 && (
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-muted"
+            >
+              {profile.name} — {profile.role}
+            </motion.p>
+          )}
+
+          {step >= 3 && (
+            <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+              <span className="text-cyan">$</span>{" "}
+              <span className="text-ink/80">cat contacto.json</span>
+              <span
+                className="caret ml-2 inline-block h-3 w-1.5 translate-y-0.5 bg-cyan/80"
+                aria-hidden="true"
+              />
+            </motion.p>
+          )}
+
+          {step >= 4 && (
+            <motion.pre
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="overflow-x-auto rounded-lg border border-white/8 bg-void/60 p-3 text-[10.5px] text-muted"
+            >
 {`{
   "email": "${profile.email}",
   "github": ${profile.github ? `"${profile.github}"` : "null"},
   "linkedin": ${profile.linkedin ? `"${profile.linkedin}"` : "null"}
 }`}
-          </pre>
+            </motion.pre>
+          )}
 
           <div className="flex flex-wrap gap-2 pt-1 font-sans">
             <button
