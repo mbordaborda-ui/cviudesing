@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { Scene } from "./Laptop";
+import { LAPTOP_THEME_DARK, Scene, type LaptopTheme } from "./Laptop";
 
 /**
  * R3F mide su contenedor con ResizeObserver y no crea el renderer hasta
@@ -27,7 +27,13 @@ function SceneResizeKick() {
   return null;
 }
 
-export function LaptopScene({ entering }: { entering: boolean }) {
+export function LaptopScene({
+  entering,
+  theme = LAPTOP_THEME_DARK,
+}: {
+  entering: boolean;
+  theme?: LaptopTheme;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -66,7 +72,7 @@ export function LaptopScene({ entering }: { entering: boolean }) {
             }}
           >
             <Suspense fallback={null}>
-              <Scene entering={entering} />
+              <Scene entering={entering} theme={theme} />
             </Suspense>
           </Canvas>
         </>

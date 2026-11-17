@@ -13,7 +13,81 @@ import {
   createDeckTexture,
   createMonogramTexture,
   createScreenTexture,
+  DECK_THEME_DARK,
+  DECK_THEME_GREEN,
+  EMBLEM_THEME_DARK,
+  EMBLEM_THEME_GREEN,
+  SCREEN_THEME_DARK,
+  SCREEN_THEME_LIGHT,
+  type DeckTheme,
+  type EmblemTheme,
+  type ScreenTheme,
 } from "./textures";
+
+export interface LaptopTheme {
+  body: string;
+  lid: string;
+  bezel: string;
+  hinge: string;
+  feet: string;
+  screenEmissive: string;
+  accent: string;
+  accent2: string;
+  rim: string;
+  screenLight: string;
+  particles: string;
+  edge: string;
+  envA: string;
+  envB: string;
+  envC: string;
+  screen: ScreenTheme;
+  emblem: EmblemTheme;
+  deck: DeckTheme;
+}
+
+/** Tema original: azul/cian/violeta (proyecto 3D). */
+export const LAPTOP_THEME_DARK: LaptopTheme = {
+  body: "#161b26",
+  lid: "#11151f",
+  bezel: "#04060c",
+  hinge: "#0a0d14",
+  feet: "#05070c",
+  screenEmissive: "#cdefff",
+  accent: "#35e3ff",
+  accent2: "#8b5cf6",
+  rim: "#d6e4ff",
+  screenLight: "#8fd8ff",
+  particles: "#6fe6ff",
+  edge: "#1e9fd4",
+  envA: "#3d6eff",
+  envB: "#35e3ff",
+  envC: "#8b5cf6",
+  screen: SCREEN_THEME_DARK,
+  emblem: EMBLEM_THEME_DARK,
+  deck: DECK_THEME_DARK,
+};
+
+/** Tema blanco/verde para el CV estático. Solo color. */
+export const LAPTOP_THEME_GREEN: LaptopTheme = {
+  body: "#15170f",
+  lid: "#12140c",
+  bezel: "#050604",
+  hinge: "#0a0b06",
+  feet: "#050604",
+  screenEmissive: "#eaffd0",
+  accent: "#caf24b",
+  accent2: "#8fb71d",
+  rim: "#f2ffe0",
+  screenLight: "#d9ffb0",
+  particles: "#caf24b",
+  edge: "#8fb71d",
+  envA: "#caf24b",
+  envB: "#b6e336",
+  envC: "#8fb71d",
+  screen: SCREEN_THEME_LIGHT,
+  emblem: EMBLEM_THEME_GREEN,
+  deck: DECK_THEME_GREEN,
+};
 
 // Positivo = la tapa cae hacia el teclado (pantalla hacia abajo).
 const CLOSED_LID = (Math.PI / 2) * 0.975;
@@ -42,9 +116,11 @@ function useEnterProgress(entering: boolean) {
 export function Laptop({
   entering,
   offsetX,
+  theme = LAPTOP_THEME_DARK,
 }: {
   entering: boolean;
   offsetX: number;
+  theme?: LaptopTheme;
 }) {
   const lid = useRef<THREE.Group>(null);
   const screenMaterial = useRef<THREE.MeshStandardMaterial>(null);
@@ -52,9 +128,12 @@ export function Laptop({
   const group = useRef<THREE.Group>(null);
   const progress = useEnterProgress(entering);
 
-  const screenTexture = useMemo(() => createScreenTexture(), []);
-  const deckTexture = useMemo(() => createDeckTexture(), []);
-  const monogramTexture = useMemo(() => createMonogramTexture(), []);
+  const screenTexture = useMemo(() => createScreenTexture(theme.screen), [theme]);
+  const deckTexture = useMemo(() => createDeckTexture(theme.deck), [theme]);
+  const monogramTexture = useMemo(
+    () => createMonogramTexture(theme.emblem),
+    [theme],
+  );
 
   useFrame((state, delta) => {
     const p = progress();
@@ -106,7 +185,7 @@ export function Laptop({
     <group ref={group} position={[offsetX, -0.42, 0]} scale={0.8}>
       {/* Base */}
       <RoundedBox args={[3.4, 0.16, 2.3]} radius={0.07} smoothness={4}>
-        <meshStandardMaterial color="#161b26" metalness={0.85} roughness={0.32} />
+        <meshStandardMaterial color={theme.body} metalness={0.85} roughness={0.32} />
       </RoundedBox>
 
       {/* Teclado + trackpad (textura única) */}
@@ -122,7 +201,7 @@ export function Laptop({
       {/* Bisagra */}
       <mesh position={[0, 0.075, -1.15]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.05, 0.05, 3.2, 20]} />
-        <meshStandardMaterial color="#0a0d14" metalness={0.9} roughness={0.35} />
+        <meshStandardMaterial color={theme.hinge} metalness={0.9} roughness={0.35} />
       </mesh>
 
       {/* Patas */}
@@ -134,7 +213,7 @@ export function Laptop({
       ].map(([x, y, z]) => (
         <mesh key={`${x}-${z}`} position={[x, y, z]}>
           <cylinderGeometry args={[0.05, 0.05, 0.03, 12]} />
-          <meshStandardMaterial color="#05070c" roughness={0.9} />
+          <meshStandardMaterial color={theme.feet} roughness={0.9} />
         </mesh>
       ))}
 
@@ -146,13 +225,13 @@ export function Laptop({
           smoothness={4}
           position={[0, 1.1, 0]}
         >
-          <meshStandardMaterial color="#11151f" metalness={0.8} roughness={0.34} />
+          <meshStandardMaterial color={theme.lid} metalness={0.8} roughness={0.34} />
         </RoundedBox>
 
         {/* Bisel */}
         <mesh position={[0, 1.1, 0.053]}>
           <planeGeometry args={[3.26, 2.06]} />
-          <meshStandardMaterial color="#04060c" roughness={0.55} />
+          <meshStandardMaterial color={theme.bezel} roughness={0.55} />
         </mesh>
 
         {/* Pantalla */}
@@ -162,7 +241,7 @@ export function Laptop({
             ref={screenMaterial}
             map={screenTexture}
             emissiveMap={screenTexture}
-            emissive="#cdefff"
+            emissive={theme.screenEmissive}
             emissiveIntensity={0.05}
             roughness={0.28}
             metalness={0}
@@ -173,7 +252,7 @@ export function Laptop({
         <pointLight
           ref={screenLight}
           position={[0, 1.05, 0.5]}
-          color="#8fd8ff"
+          color={theme.screenLight}
           intensity={0.5}
           distance={4.5}
           decay={2}
@@ -195,7 +274,7 @@ export function Laptop({
       {/* Filo luminoso frontal de la base */}
       <mesh position={[0, -0.03, 1.152]}>
         <boxGeometry args={[2.6, 0.008, 0.008]} />
-        <meshBasicMaterial color="#1e9fd4" toneMapped={false} transparent opacity={0.7} />
+        <meshBasicMaterial color={theme.edge} toneMapped={false} transparent opacity={0.7} />
       </mesh>
     </group>
   );
@@ -251,7 +330,13 @@ function Rig({
   return null;
 }
 
-function Particles({ count = 180 }: { count?: number }) {
+function Particles({
+  count = 180,
+  color = "#6fe6ff",
+}: {
+  count?: number;
+  color?: string;
+}) {
   const positions = useMemo(() => {
     const array = new Float32Array(count * 3);
     for (let i = 0; i < count; i += 1) {
@@ -282,7 +367,7 @@ function Particles({ count = 180 }: { count?: number }) {
       </bufferGeometry>
       <pointsMaterial
         size={0.022}
-        color="#6fe6ff"
+        color={color}
         transparent
         opacity={0.5}
         sizeAttenuation
@@ -297,7 +382,13 @@ function Floor() {
   return null;
 }
 
-export function Scene({ entering }: { entering: boolean }) {
+export function Scene({
+  entering,
+  theme = LAPTOP_THEME_DARK,
+}: {
+  entering: boolean;
+  theme?: LaptopTheme;
+}) {
   const { size } = useThree();
   const offsetX = size.width >= 1024 ? 1.0 : 0;
 
@@ -307,36 +398,36 @@ export function Scene({ entering }: { entering: boolean }) {
       <directionalLight
         position={[3.5, 5.5, 4]}
         intensity={2.4}
-        color="#d6e4ff"
+        color={theme.rim}
       />
       <directionalLight
         position={[0, 2, 6]}
         intensity={1.1}
-        color="#9ec9ff"
+        color={theme.accent2}
       />
       <pointLight
         position={[-3, 1.4, -1]}
         intensity={7}
         distance={9}
-        color="#35e3ff"
+        color={theme.accent}
       />
       <pointLight
         position={[3.6, 0.8, -2.2]}
         intensity={5}
         distance={9}
-        color="#8b5cf6"
+        color={theme.accent2}
       />
       <pointLight
         position={[-2.6, 1.4, 2.2]}
         intensity={9}
         distance={8}
-        color="#35e3ff"
+        color={theme.accent}
       />
       <pointLight
         position={[3.2, 1.3, -1.8]}
         intensity={4.5}
         distance={9}
-        color="#8b5cf6"
+        color={theme.accent2}
       />
 
       <pointLight
@@ -349,7 +440,7 @@ export function Scene({ entering }: { entering: boolean }) {
         <Lightformer
           form="rect"
           intensity={2.4}
-          color="#3d6eff"
+          color={theme.envA}
           position={[-4, 3, 2]}
           scale={[6, 4, 1]}
           rotation={[0, Math.PI / 4, 0]}
@@ -357,7 +448,7 @@ export function Scene({ entering }: { entering: boolean }) {
         <Lightformer
           form="rect"
           intensity={1.7}
-          color="#35e3ff"
+          color={theme.envB}
           position={[4, 2, -1]}
           scale={[4, 3, 1]}
           rotation={[0, -Math.PI / 3, 0]}
@@ -365,7 +456,7 @@ export function Scene({ entering }: { entering: boolean }) {
         <Lightformer
           form="ring"
           intensity={1.1}
-          color="#8b5cf6"
+          color={theme.envC}
           position={[0, 5, -3]}
           scale={3}
         />
@@ -378,8 +469,8 @@ export function Scene({ entering }: { entering: boolean }) {
         />
       </Environment>
 
-      <Laptop entering={entering} offsetX={offsetX} />
-      <Particles />
+      <Laptop entering={entering} offsetX={offsetX} theme={theme} />
+      <Particles color={theme.particles} />
 
       <ContactShadows
         position={[offsetX, -0.497, 0]}

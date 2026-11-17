@@ -1,6 +1,7 @@
 import { createRoot, type Root } from "react-dom/client";
 import { useEffect, useRef, useState } from "react";
 import { LaptopScene } from "@/components/three/LaptopScene";
+import { LAPTOP_THEME_GREEN } from "@/components/three/Laptop";
 
 /**
  * Envoltorio mínimo para montar el portátil 3D ORIGINAL dentro del sitio
@@ -36,7 +37,7 @@ const api: LaptopApi = {
         };
       }, []);
 
-      return <LaptopScene entering={entering} />;
+      return <LaptopScene entering={entering} theme={LAPTOP_THEME_GREEN} />;
     }
 
     if (root) root.unmount();

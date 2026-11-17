@@ -80,3 +80,14 @@ Reglas:
 - Si se toca el portátil (solo con autorización), hay que **recompilar** el bundle.
 - El sitio estático mantiene su paleta blanco/verde; el 3D va con fondo
   transparente sobre ella.
+
+### Temas de color (solo color, sin geometría)
+
+`components/three/textures.ts` y `Laptop.tsx` aceptan temas opcionales:
+
+- `LAPTOP_THEME_DARK` → por defecto. Es el aspecto original (cian/violeta), usado
+  por el portafolio 3D.
+- `LAPTOP_THEME_GREEN` → solo lo usa `embed/laptop-embed.tsx`: pantalla blanca con
+  rejilla verde, texto negro y acentos lima.
+
+Geometría, cámara, tiempos y animación son idénticos en ambos temas.

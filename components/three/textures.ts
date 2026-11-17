@@ -2,22 +2,124 @@
 
 import * as THREE from "three";
 
+/* =============================================================
+   Temas de color del portátil (solo color; geometría intacta)
+   ============================================================= */
+
+export interface ScreenTheme {
+  bg: [string, string, string];
+  grid: string;
+  halo: [string, string];
+  bar: string;
+  barText: string;
+  mb: [string, string, string];
+  mbGlow: string;
+  name: string;
+  role: string;
+  log: string;
+  logAccent: string;
+  scan: string;
+}
+
+export const SCREEN_THEME_DARK: ScreenTheme = {
+  bg: ["#050b1c", "#081229", "#04060f"],
+  grid: "rgba(53,227,255,0.09)",
+  halo: ["rgba(53,227,255,0.30)", "rgba(61,110,255,0.12)"],
+  bar: "rgba(4,8,18,0.85)",
+  barText: "rgba(233,238,249,0.55)",
+  mb: ["#35e3ff", "#7aa2ff", "#8b5cf6"],
+  mbGlow: "rgba(53,227,255,0.55)",
+  name: "rgba(233,238,249,0.92)",
+  role: "rgba(139,148,167,0.9)",
+  log: "rgba(139,148,167,0.75)",
+  logAccent: "rgba(53,227,255,0.95)",
+  scan: "rgba(53,227,255,0.06)",
+};
+
+export const SCREEN_THEME_LIGHT: ScreenTheme = {
+  bg: ["#ffffff", "#f7fbf0", "#eef5e2"],
+  grid: "rgba(143,183,29,0.18)",
+  halo: ["rgba(202,242,75,0.35)", "rgba(143,183,29,0.12)"],
+  bar: "rgba(255,255,255,0.92)",
+  barText: "rgba(11,11,12,0.55)",
+  mb: ["#b6e336", "#8fb71d", "#6f9a0e"],
+  mbGlow: "rgba(143,183,29,0.55)",
+  name: "rgba(11,11,12,0.9)",
+  role: "rgba(92,92,100,0.9)",
+  log: "rgba(92,92,100,0.8)",
+  logAccent: "#6f9a0e",
+  scan: "rgba(143,183,29,0.08)",
+};
+
+export interface EmblemTheme {
+  light: string;
+  mid: string;
+  deep: string;
+  stroke: string;
+  core: string;
+  glow: string;
+}
+
+export const EMBLEM_THEME_DARK: EmblemTheme = {
+  light: "#c9f9ff",
+  mid: "#35e3ff",
+  deep: "#8b5cf6",
+  stroke: "rgba(53,227,255,0.45)",
+  core: "#d9fbff",
+  glow: "rgba(53,227,255,0.9)",
+};
+
+export const EMBLEM_THEME_GREEN: EmblemTheme = {
+  light: "#f2ffcc",
+  mid: "#caf24b",
+  deep: "#8fb71d",
+  stroke: "rgba(143,183,29,0.55)",
+  core: "#f4ffe0",
+  glow: "rgba(202,242,75,0.9)",
+};
+
+export interface DeckTheme {
+  bg: string;
+  keyTop: string;
+  keyBottom: string;
+  keyStroke: string;
+  glow: string;
+}
+
+export const DECK_THEME_DARK: DeckTheme = {
+  bg: "#0b0f18",
+  keyTop: "#1d2432",
+  keyBottom: "#141a26",
+  keyStroke: "rgba(53,227,255,0.05)",
+  glow: "rgba(53,227,255,0.5)",
+};
+
+export const DECK_THEME_GREEN: DeckTheme = {
+  bg: "#0d0f0a",
+  keyTop: "#20241a",
+  keyBottom: "#14170f",
+  keyStroke: "rgba(143,183,29,0.07)",
+  glow: "rgba(202,242,75,0.5)",
+};
+
 /** Pantalla de arranque dibujada en canvas: cero assets externos. */
-export function createScreenTexture(): THREE.CanvasTexture {
+export function createScreenTexture(
+  theme: ScreenTheme = SCREEN_THEME_DARK,
+): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
   canvas.width = 1024;
   canvas.height = 640;
   const ctx = canvas.getContext("2d")!;
 
   const bg = ctx.createLinearGradient(0, 0, 1024, 640);
-  bg.addColorStop(0, "#050b1c");
-  bg.addColorStop(0.55, "#081229");
-  bg.addColorStop(1, "#04060f");
+  bg.addColorStop(0, theme.bg[0]);
+  bg.addColorStop(0.55, theme.bg[1]);
+  bg.addColorStop(1, theme.bg[2]);
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, 1024, 640);
 
   // Rejilla
-  ctx.strokeStyle = "rgba(53,227,255,0.09)";
+  ctx.strokeStyle = theme.grid;
   ctx.lineWidth = 1;
   for (let x = 0; x <= 1024; x += 64) {
     ctx.beginPath();
@@ -34,16 +136,15 @@ export function createScreenTexture(): THREE.CanvasTexture {
 
   // Halo central
   const halo = ctx.createRadialGradient(512, 300, 10, 512, 300, 420);
-  halo.addColorStop(0, "rgba(53,227,255,0.30)");
-  halo.addColorStop(0.45, "rgba(61,110,255,0.12)");
+  halo.addColorStop(0, theme.halo[0]);
+  halo.addColorStop(0.45, theme.halo[1]);
   halo.addColorStop(1, "rgba(4,6,11,0)");
   ctx.fillStyle = halo;
   ctx.fillRect(0, 0, 1024, 640);
 
   // Barra superior
-  ctx.fillStyle = "rgba(4,8,18,0.85)";
+  ctx.fillStyle = theme.bar;
   ctx.fillRect(0, 0, 1024, 44);
-  ctx.fillStyle = "rgba(233,238,249,0.35)";
   ["#ff5f57", "#febc2e", "#28c840"].forEach((color, i) => {
     ctx.beginPath();
     ctx.fillStyle = color;
@@ -52,27 +153,27 @@ export function createScreenTexture(): THREE.CanvasTexture {
     ctx.fill();
   });
   ctx.globalAlpha = 1;
-  ctx.fillStyle = "rgba(233,238,249,0.55)";
+  ctx.fillStyle = theme.barText;
   ctx.font = "500 16px monospace";
   ctx.fillText("miguel.os — boot", 110, 28);
 
   // Monograma
   ctx.textAlign = "center";
   const mono = ctx.createLinearGradient(380, 0, 660, 0);
-  mono.addColorStop(0, "#35e3ff");
-  mono.addColorStop(0.5, "#7aa2ff");
-  mono.addColorStop(1, "#8b5cf6");
+  mono.addColorStop(0, theme.mb[0]);
+  mono.addColorStop(0.5, theme.mb[1]);
+  mono.addColorStop(1, theme.mb[2]);
   ctx.fillStyle = mono;
   ctx.font = "700 200px ui-sans-serif, system-ui, sans-serif";
-  ctx.shadowColor = "rgba(53,227,255,0.55)";
+  ctx.shadowColor = theme.mbGlow;
   ctx.shadowBlur = 48;
   ctx.fillText("MB", 512, 360);
   ctx.shadowBlur = 0;
 
-  ctx.fillStyle = "rgba(233,238,249,0.92)";
+  ctx.fillStyle = theme.name;
   ctx.font = "600 30px ui-sans-serif, system-ui, sans-serif";
   ctx.fillText("MIGUEL BORDA", 512, 420);
-  ctx.fillStyle = "rgba(139,148,167,0.9)";
+  ctx.fillStyle = theme.role;
   ctx.font = "400 18px monospace";
   ctx.fillText("FULL STACK DEVELOPER", 512, 452);
 
@@ -86,16 +187,15 @@ export function createScreenTexture(): THREE.CanvasTexture {
     "> status: ready",
   ];
   lines.forEach((line, index) => {
-    ctx.fillStyle =
-      index === lines.length - 1 ? "rgba(53,227,255,0.95)" : "rgba(139,148,167,0.75)";
+    ctx.fillStyle = index === lines.length - 1 ? theme.logAccent : theme.log;
     ctx.fillText(line, 76, 520 + index * 26);
   });
 
   // Línea de escaneo
   const scan = ctx.createLinearGradient(0, 0, 0, 640);
-  scan.addColorStop(0, "rgba(53,227,255,0)");
-  scan.addColorStop(0.5, "rgba(53,227,255,0.06)");
-  scan.addColorStop(1, "rgba(53,227,255,0)");
+  scan.addColorStop(0, "rgba(255,255,255,0)");
+  scan.addColorStop(0.5, theme.scan);
+  scan.addColorStop(1, "rgba(255,255,255,0)");
   ctx.fillStyle = scan;
   ctx.fillRect(0, 0, 1024, 640);
 
@@ -106,13 +206,15 @@ export function createScreenTexture(): THREE.CanvasTexture {
 }
 
 /** Teclado + trackpad como textura: 1 solo draw call en lugar de 70 mallas. */
-export function createDeckTexture(): THREE.CanvasTexture {
+export function createDeckTexture(
+  theme: DeckTheme = DECK_THEME_DARK,
+): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
   canvas.width = 1024;
   canvas.height = 560;
   const ctx = canvas.getContext("2d")!;
 
-  ctx.fillStyle = "#0b0f18";
+  ctx.fillStyle = theme.bg;
   ctx.fillRect(0, 0, 1024, 560);
 
   const keyW = 56;
@@ -127,12 +229,12 @@ export function createDeckTexture(): THREE.CanvasTexture {
       const x = startX + col * (keyW + gap);
       const y = startY + row * (keyH + gap);
       const grad = ctx.createLinearGradient(x, y, x, y + keyH);
-      grad.addColorStop(0, "#1d2432");
-      grad.addColorStop(1, "#141a26");
+      grad.addColorStop(0, theme.keyTop);
+      grad.addColorStop(1, theme.keyBottom);
       ctx.fillStyle = grad;
       roundRect(ctx, x, y, keyW, keyH, 8);
       ctx.fill();
-      ctx.strokeStyle = "rgba(53,227,255,0.05)";
+      ctx.strokeStyle = theme.keyStroke;
       ctx.stroke();
     }
   }
@@ -142,8 +244,8 @@ export function createDeckTexture(): THREE.CanvasTexture {
   const spaceY = startY + 4 * (keyH + gap);
   const spaceW = 6 * keyW + 5 * gap;
   const spaceGrad = ctx.createLinearGradient(spaceX, spaceY, spaceX, spaceY + keyH);
-  spaceGrad.addColorStop(0, "#1d2432");
-  spaceGrad.addColorStop(1, "#141a26");
+  spaceGrad.addColorStop(0, theme.keyTop);
+  spaceGrad.addColorStop(1, theme.keyBottom);
   ctx.fillStyle = spaceGrad;
   roundRect(ctx, spaceX, spaceY, spaceW, keyH, 8);
   ctx.fill();
@@ -165,9 +267,9 @@ export function createDeckTexture(): THREE.CanvasTexture {
 
   // Luz de borde inferior
   const glow = ctx.createLinearGradient(0, 520, 1024, 520);
-  glow.addColorStop(0, "rgba(53,227,255,0)");
-  glow.addColorStop(0.5, "rgba(53,227,255,0.5)");
-  glow.addColorStop(1, "rgba(53,227,255,0)");
+  glow.addColorStop(0, "rgba(0,0,0,0)");
+  glow.addColorStop(0.5, theme.glow);
+  glow.addColorStop(1, "rgba(0,0,0,0)");
   ctx.fillStyle = glow;
   ctx.fillRect(0, 548, 1024, 3);
 
@@ -194,7 +296,9 @@ export function createGlowTexture(): THREE.CanvasTexture {
 }
 
 /** Emblema geométrico (simétrico) para la tapa: sin texto que pueda espejarse. */
-export function createMonogramTexture(): THREE.CanvasTexture {
+export function createMonogramTexture(
+  theme: EmblemTheme = EMBLEM_THEME_DARK,
+): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
   canvas.width = 512;
   canvas.height = 512;
@@ -203,9 +307,9 @@ export function createMonogramTexture(): THREE.CanvasTexture {
   ctx.clearRect(0, 0, 512, 512);
 
   const gradient = ctx.createLinearGradient(150, 110, 370, 400);
-  gradient.addColorStop(0, "#c9f9ff");
-  gradient.addColorStop(0.45, "#35e3ff");
-  gradient.addColorStop(1, "#8b5cf6");
+  gradient.addColorStop(0, theme.light);
+  gradient.addColorStop(0.45, theme.mid);
+  gradient.addColorStop(1, theme.deep);
 
   const center = 256;
   const hexRadius = 150;
@@ -220,7 +324,7 @@ export function createMonogramTexture(): THREE.CanvasTexture {
     else ctx.lineTo(x, y);
   }
   ctx.closePath();
-  ctx.strokeStyle = "rgba(53,227,255,0.45)";
+  ctx.strokeStyle = theme.stroke;
   ctx.lineWidth = 5;
   ctx.stroke();
 
@@ -230,7 +334,7 @@ export function createMonogramTexture(): THREE.CanvasTexture {
   ctx.rotate(Math.PI / 4);
   ctx.strokeStyle = gradient;
   ctx.lineWidth = 14;
-  ctx.shadowColor = "rgba(53,227,255,0.9)";
+  ctx.shadowColor = theme.glow;
   ctx.shadowBlur = 42;
   ctx.strokeRect(-62, -62, 124, 124);
   ctx.restore();
@@ -238,8 +342,8 @@ export function createMonogramTexture(): THREE.CanvasTexture {
   // Núcleo
   ctx.beginPath();
   ctx.arc(center, center, 16, 0, Math.PI * 2);
-  ctx.fillStyle = "#d9fbff";
-  ctx.shadowColor = "rgba(53,227,255,1)";
+  ctx.fillStyle = theme.core;
+  ctx.shadowColor = theme.glow;
   ctx.shadowBlur = 36;
   ctx.fill();
 
