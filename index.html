@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#F5F5F2" />
+
+  <!-- =========================================================
+       SEO  ·  EDIT: nombre, descripción, URL y redes
+       ========================================================= -->
+  <title>Miguel Borda — Desarrollador de Software Full Stack</title>
+  <meta name="description" content="Hoja de vida de Miguel Borda, desarrollador de software Full Stack enfocado en automatización y solución de procesos. Disponible para empresas." />
+  <meta name="author" content="Miguel Borda" />
+  <meta name="keywords" content="desarrollador de software, desarrollador full stack, automatización de procesos, solución de procesos, frontend, backend, APIs, bases de datos, chatbots con IA, portafolio, hoja de vida, CV" />
+  <link rel="canonical" href="https://tudominio.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Miguel Borda — Desarrollador de Software Full Stack" />
+  <meta property="og:description" content="Desarrollo de software Full Stack enfocado en automatización y solución de procesos. Disponible para empresas." />
+  <meta property="og:url" content="https://tudominio.com/" />
+  <meta property="og:image" content="assets/img/og-cover.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Miguel Borda — Desarrollador de Software Full Stack" />
+  <meta name="twitter:description" content="Software Full Stack · Automatización y solución de procesos." />
+  <meta name="twitter:image" content="assets/img/og-cover.svg" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Marca de JS activo (evita parpadeo en las animaciones de scroll) -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- =========================================================
+       Datos estructurados (JSON-LD)  ·  EDIT
+       ========================================================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Miguel Borda",
+    "jobTitle": "Desarrollador de Software Full Stack",
+    "url": "https://tudominio.com/",
+    "email": "mailto:mbordaborda@gmail.com",
+    "sameAs": [
+      "https://github.com/tu-usuario",
+      "https://www.linkedin.com/in/tu-usuario/"
+    ],
+    "knowsAbout": ["Desarrollo Full Stack", "Automatización de procesos", "Solución de procesos", "APIs REST", "Bases de datos SQL", "C#", "Chatbots con IA"]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#inicio">Saltar al contenido principal</a>
+
+  <!-- =========================================================
+       CABECERA SOLO PARA IMPRESIÓN / PDF (A4)
+       ========================================================= -->
+  <header class="print-only print-head">
+    <h1>Miguel Borda</h1>
+    <p class="print-role">Desarrollador de Software Full Stack</p>
+    <p class="print-contact">
+      mbordaborda@gmail.com &nbsp;·&nbsp; GitHub: tu-usuario &nbsp;·&nbsp; LinkedIn: tu-usuario &nbsp;·&nbsp; [Ciudad, País]
+    </p>
+  </header>
+
+  <!-- =========================================================
+       NAVBAR
+       ========================================================= -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a class="nav__brand" href="#inicio" aria-label="Inicio — Miguel Borda">
+        <span class="nav__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6 3 12l5 6" /><path d="m16 6 5 6-5 6" /><path d="M13.5 4 10.5 20" />
+          </svg>
+        </span>
+        <span class="nav__name">Miguel&nbsp;Borda</span>
+      </a>
+
+      <nav class="nav__menu" id="nav-menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#certificaciones">Certificaciones</a></li>
+          <li><a href="#formacion">Formación</a></li>
+        </ul>
+        <a class="btn btn--sm btn--dark nav__cta" href="#contacto">
+          <span>Contacto</span>
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+        </a>
+      </nav>
+
+      <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__progress" id="nav-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- =========================================================
+         01 · HERO
+         ========================================================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__grid container">
+        <div class="hero__copy">
+          <p class="kicker reveal" data-reveal="up">
+            <span class="dot" aria-hidden="true"></span> Desarrollador Full Stack · Automatización y procesos
+          </p>
+
+          <h1 class="hero__title" id="hero-title">
+            <span class="line"><span class="line__in">Desarrollo software</span></span>
+            <span class="line"><span class="line__in"><em>Full Stack</em> enfocado</span></span>
+            <span class="line"><span class="line__in">en automatización.</span></span>
+          </h1>
+
+          <p class="hero__lead reveal" data-reveal="up" data-reveal-delay="120">
+            Soy <strong>Miguel Borda</strong>, desarrollador de software <strong>Full Stack</strong>
+            enfocado en <strong>automatización y solución de procesos</strong>. Ayudo a
+            <strong>empresas y equipos</strong> a digitalizar y automatizar su operación:
+            aplicaciones web, sistemas de inventario, integraciones y chatbots con IA, con código
+            limpio e interfaces cuidadas.
+          </p>
+
+          <p class="hero__focus reveal" data-reveal="up" data-reveal-delay="160">
+            <span class="hero__focus-k">Enfoque</span>
+            <span class="rotator">
+              <span class="rotator__text" data-words="automatización de procesos|solución de procesos|aplicaciones full stack|APIs REST|bases de datos SQL|automatización documental"></span><span class="rotator__caret" aria-hidden="true"></span>
+            </span>
+          </p>
+
+          <div class="hero__actions reveal" data-reveal="up" data-reveal-delay="200">
+            <a class="btn btn--dark" href="#proyectos">
+              <span>Ver proyectos</span>
+              <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+            </a>
+            <button class="btn btn--ghost" type="button" data-action="print">
+              <span>Descargar CV</span>
+              <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8m0 0 3-3M8 10 5 7"/><path d="M3 12v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1"/></svg>
+            </button>
+
+            <div class="hero__socials" aria-label="Perfiles profesionales">
+              <a class="icon-link" href="https://github.com/tu-usuario" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+              </a>
+              <a class="icon-link" href="https://www.linkedin.com/in/tu-usuario/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.71h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.02-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21h-4V9Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elemento gráfico tecnológico -->
+        <div class="hero__visual reveal" data-reveal="fade" data-reveal-delay="260" aria-hidden="true">
+          <div class="visual" data-tilt>
+            <div class="visual__glow"></div>
+
+            <div class="visual__card">
+              <div class="visual__bar">
+                <span class="visual__dots"><i></i><i></i><i></i></span>
+                <span class="visual__file">deploy.ts</span>
+                <span class="visual__lux">⌘K</span>
+              </div>
+              <pre class="visual__code"><span class="c-kw">const</span> dev = {
+  <span class="c-p">name</span>: <span class="c-s">"Miguel Borda"</span>,
+  <span class="c-p">role</span>: <span class="c-s">"Desarrollador Full Stack"</span>,
+  <span class="c-p">stack</span>: [<span class="c-s">"web"</span>, <span class="c-s">"apis"</span>, <span class="c-s">"datos"</span>],
+  <span class="c-p">focus</span>: <span class="c-s">"automatización de procesos"</span>
+};
+<span class="c-kw">export default</span> dev;</pre>
+            </div>
+
+            <div class="chip chip--a"><span class="chip__dot"></span>API REST</div>
+            <div class="chip chip--b">Dashboard</div>
+            <div class="chip chip--c">Automatización</div>
+
+            <div class="visual__badge">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.5 4.5L19 7"/></svg>
+              <div><strong>Disponible para empresas</strong><span>Remoto · Híbrido</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cinta de tecnologías -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>JavaScript</span><i>✦</i><span>TypeScript</span><i>✦</i><span>React</span><i>✦</i><span>Node.js</span><i>✦</i><span>Python</span><i>✦</i><span>SQL</span><i>✦</i><span>APIs REST</span><i>✦</i><span>Automatización</span><i>✦</i><span>UI / UX</span><i>✦</i><span>Git</span><i>✦</i>
+          <span>JavaScript</span><i>✦</i><span>TypeScript</span><i>✦</i><span>React</span><i>✦</i><span>Node.js</span><i>✦</i><span>Python</span><i>✦</i><span>SQL</span><i>✦</i><span>APIs REST</span><i>✦</i><span>Automatización</span><i>✦</i><span>UI / UX</span><i>✦</i><span>Git</span><i>✦</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         02 · SOBRE MÍ
+         ========================================================= -->
+    <section class="section" id="sobre-mi" aria-labelledby="sobre-title">
+      <div class="container about">
+        <div class="about__aside">
+          <p class="index-label reveal" data-reveal="up"><span>02</span> — Sobre mí</p>
+          <h2 class="section__title reveal" data-reveal="up" data-reveal-delay="60" id="sobre-title">
+            Perfil<br />profesional
+          </h2>
+          <div class="about__meta reveal" data-reveal="up" data-reveal-delay="120">
+            <div><span class="meta-k">Buscando</span><span class="meta-v">Equipos y empresas de tecnología</span></div>
+            <div><span class="meta-k">Enfoque</span><span class="meta-v">Full Stack · Automatización · Datos</span></div>
+            <div><span class="meta-k">Modalidad</span><span class="meta-v">Remoto · Híbrido</span></div>
+            <div><span class="meta-k">Idiomas</span><span class="meta-v">Español · Inglés</span></div>
+          </div>
+        </div>
+
+        <div class="about__body">
+          <p class="lede reveal" data-reveal="up">
+            Convierto necesidades reales en software claro, rápido y mantenible, con un foco
+            especial en <strong>automatizar y ordenar procesos</strong>. Disfruto el recorrido
+            completo: entender el problema, diseñar la solución y llevar cada detalle del código a
+            producción.
+          </p>
+
+          <p class="reveal" data-reveal="up" data-reveal-delay="80">
+            Me integro con facilidad a equipos de desarrollo y trabajo principalmente en
+            <strong>aplicaciones web full stack</strong>, <strong>sistemas de inventario</strong>,
+            <strong>bases de datos SQL</strong>, <strong>APIs</strong> e
+            <strong>integraciones</strong> que ahorran tiempo y reducen errores. Me motiva
+            automatizar tareas repetitivas, el código ordenado y las interfaces que se sienten
+            simples incluso cuando el sistema detrás no lo es.
+          </p>
+
+          <div class="strengths">
+            <article class="strength reveal" data-reveal="up" data-reveal-delay="0">
+              <span class="strength__num">01</span>
+              <h3>Automatización de procesos</h3>
+              <p>Detecto tareas repetitivas y las convierto en flujos automáticos, reduciendo errores y tiempos muertos.</p>
+            </article>
+            <article class="strength reveal" data-reveal="up" data-reveal-delay="80">
+              <span class="strength__num">02</span>
+              <h3>Solución de problemas</h3>
+              <p>Analizo cada proceso, entiendo su lógica y diseño la solución técnica que mejor lo resuelve.</p>
+            </article>
+            <article class="strength reveal" data-reveal="up" data-reveal-delay="160">
+              <span class="strength__num">03</span>
+              <h3>Full Stack</h3>
+              <p>Cubro frontend, backend y datos: construyo la solución completa, de la interfaz a la base de datos.</p>
+            </article>
+            <article class="strength reveal" data-reveal="up" data-reveal-delay="240">
+              <span class="strength__num">04</span>
+              <h3>Comunicación clara</h3>
+              <p>Documento, explico y colaboro. El mejor código es el que el equipo entiende y puede mantener.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         03 · EXPERIENCIA
+         ========================================================= -->
+    <section class="section section--line" id="experiencia" aria-labelledby="exp-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="index-label reveal" data-reveal="up"><span>03</span> — Trayectoria</p>
+          <h2 class="section__title reveal" data-reveal="up" data-reveal-delay="60" id="exp-title">Experiencia<br />profesional</h2>
+          <p class="section__intro reveal" data-reveal="up" data-reveal-delay="120">
+            Mi experiencia construyendo software enfocado en automatización y solución de procesos.
+          </p>
+        </header>
+
+        <ol class="timeline">
+          <!-- EDIT: duplica este bloque <li> por cada experiencia -->
+          <!-- EDIT: confirma el año de inicio/fin de esta experiencia -->
+          <li class="tl reveal" data-reveal="up">
+            <div class="tl__aside">
+              <span class="tl__date">07 Jul 2026 — 07 Ene 2026</span>
+              <span class="tl__type">Prácticas técnicas</span>
+            </div>
+            <div class="tl__content">
+              <h3 class="tl__role">Desarrollador Full Stack</h3>
+              <p class="tl__company">Empire International · Chía · Presencial</p>
+              <p class="tl__desc">
+                Desarrollo de una solución digital para el manejo de inventarios y la automatización
+                documental de la empresa —documentos, actas y paz y salvo— con protocolos de
+                seguridad y políticas de acceso (RLS).
+              </p>
+              <ul class="tl__list">
+                <li>Automatización de documentos, actas y paz y salvo.</li>
+                <li>Definición de protocolos de seguridad y políticas RLS efectivas.</li>
+                <li>Análisis de problemáticas, documentación técnica y levantamiento de requerimientos.</li>
+                <li>Chatbot con IA integrado para consultas y soporte.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Full Stack</span>
+                <span class="tag">Automatización documental</span>
+                <span class="tag">Seguridad / RLS</span>
+                <span class="tag">Análisis y requerimientos</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- EDIT: proyecto personal — Pasion Motors -->
+          <li class="tl reveal" data-reveal="up">
+            <div class="tl__aside">
+              <span class="tl__date">2026</span>
+              <span class="tl__type">Proyecto personal</span>
+            </div>
+            <div class="tl__content">
+              <h3 class="tl__role">Pasion Motors</h3>
+              <p class="tl__company">E-commerce · Remoto</p>
+              <p class="tl__desc">
+                Aplicación de e-commerce orientada a agilizar las ventas, con automatización de
+                catálogos, procesos de pago y notificaciones de productos nuevos.
+              </p>
+              <ul class="tl__list">
+                <li>Automatización de catálogos y procesos de pago.</li>
+                <li>Notificaciones automáticas de productos nuevos.</li>
+                <li>Panel administrativo y estadístico para la empresa.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">E-commerce</span>
+                <span class="tag">Pagos</span>
+                <span class="tag">Panel admin</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- EDIT: proyecto personal — Orion -->
+          <li class="tl reveal" data-reveal="up">
+            <div class="tl__aside">
+              <span class="tl__date">2026</span>
+              <span class="tl__type">Proyecto personal · IA</span>
+            </div>
+            <div class="tl__content">
+              <h3 class="tl__role">Orion</h3>
+              <p class="tl__company">Asistente personal con IA · Remoto</p>
+              <p class="tl__desc">
+                Asistente personal con IA controlado por voz, capaz de responder consultas y
+                entregar información en tiempo real.
+              </p>
+              <ul class="tl__list">
+                <li>Control por voz e interacción conversacional.</li>
+                <li>Consulta de temperatura, hora e información general.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">IA</span>
+                <span class="tag">Voz</span>
+                <span class="tag">Automatización</span>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         04 · PROYECTOS
+         ========================================================= -->
+    <section class="section section--line" id="proyectos" aria-labelledby="proj-title">
+      <div class="container">
+        <header class="section__head section__head--split">
+          <div>
+            <p class="index-label reveal" data-reveal="up"><span>04</span> — Portafolio</p>
+            <h2 class="section__title reveal" data-reveal="up" data-reveal-delay="60" id="proj-title">Proyectos<br />destacados</h2>
+          </div>
+          <p class="section__intro reveal" data-reveal="up" data-reveal-delay="120">
+            Una selección de aplicaciones web, sistemas de gestión, dashboards, APIs y
+            automatizaciones. Reemplaza las imágenes y los enlaces por los de tus proyectos reales.
+          </p>
+        </header>
+
+        <div class="projects">
+          <!-- EDIT: duplica este <article> por cada proyecto -->
+          <article class="project reveal" data-reveal="up">
+            <a class="project__media" href="#" data-placeholder-link aria-label="[Ver demo del proyecto]">
+              <img src="assets/img/project-web-app.svg" alt="[Captura de la aplicación web de gestión]" loading="lazy" width="1200" height="800" />
+              <span class="project__view">Ver demo
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+              </span>
+            </a>
+            <div class="project__body">
+              <div class="project__top">
+                <h3 class="project__name">[Plataforma web de gestión]</h3>
+                <span class="project__cat">Aplicación web</span>
+              </div>
+              <p class="project__desc">[Descripción breve del proyecto: problema que resuelve y tu rol en él.]</p>
+              <ul class="project__features">
+                <li>[Funcionalidad principal]</li>
+                <li>[Funcionalidad principal]</li>
+                <li>[Funcionalidad principal]</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+              </div>
+              <div class="project__links">
+                <a class="link-arrow" href="#" data-placeholder-link>Demo en vivo
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+                <a class="link-arrow" href="https://github.com/tu-usuario" target="_blank" rel="noopener">Repositorio
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" data-reveal="up" data-reveal-delay="80">
+            <a class="project__media" href="#" data-placeholder-link aria-label="[Ver demo del sistema de inventario]">
+              <img src="assets/img/project-inventory.svg" alt="[Captura del sistema de inventario]" loading="lazy" width="1200" height="800" />
+              <span class="project__view">Ver demo
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+              </span>
+            </a>
+            <div class="project__body">
+              <div class="project__top">
+                <h3 class="project__name">[Sistema de inventario]</h3>
+                <span class="project__cat">Gestión</span>
+              </div>
+              <p class="project__desc">[Descripción breve: control de stock, entradas y salidas, reportes.]</p>
+              <ul class="project__features">
+                <li>[Control de stock en tiempo real]</li>
+                <li>[Alertas de bajo inventario]</li>
+                <li>[Reportes exportables]</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+              </div>
+              <div class="project__links">
+                <a class="link-arrow" href="#" data-placeholder-link>Demo en vivo
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+                <a class="link-arrow" href="https://github.com/tu-usuario" target="_blank" rel="noopener">Repositorio
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" data-reveal="up" data-reveal-delay="160">
+            <a class="project__media" href="#" data-placeholder-link aria-label="[Ver demo del dashboard]">
+              <img src="assets/img/project-dashboard.svg" alt="[Captura del dashboard analítico]" loading="lazy" width="1200" height="800" />
+              <span class="project__view">Ver demo
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+              </span>
+            </a>
+            <div class="project__body">
+              <div class="project__top">
+                <h3 class="project__name">[Dashboard analítico]</h3>
+                <span class="project__cat">Datos</span>
+              </div>
+              <p class="project__desc">[Descripción breve: visualización de métricas y toma de decisiones.]</p>
+              <ul class="project__features">
+                <li>[Métricas en tiempo real]</li>
+                <li>[Filtros y rangos de fecha]</li>
+                <li>[Gráficos interactivos]</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+              </div>
+              <div class="project__links">
+                <a class="link-arrow" href="#" data-placeholder-link>Demo en vivo
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+                <a class="link-arrow" href="https://github.com/tu-usuario" target="_blank" rel="noopener">Repositorio
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" data-reveal="up" data-reveal-delay="240">
+            <a class="project__media" href="#" data-placeholder-link aria-label="[Ver demo de la API]">
+              <img src="assets/img/project-api.svg" alt="[Captura de la documentación de la API]" loading="lazy" width="1200" height="800" />
+              <span class="project__view">Ver demo
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+              </span>
+            </a>
+            <div class="project__body">
+              <div class="project__top">
+                <h3 class="project__name">[API REST + integraciones]</h3>
+                <span class="project__cat">Backend</span>
+              </div>
+              <p class="project__desc">[Descripción breve: servicios que conectan sistemas y exponen datos.]</p>
+              <ul class="project__features">
+                <li>[Autenticación y roles]</li>
+                <li>[Documentación de endpoints]</li>
+                <li>[Integración con servicios externos]</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+              </div>
+              <div class="project__links">
+                <a class="link-arrow" href="#" data-placeholder-link>Documentación
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+                <a class="link-arrow" href="https://github.com/tu-usuario" target="_blank" rel="noopener">Repositorio
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" data-reveal="up" data-reveal-delay="320">
+            <a class="project__media" href="#" data-placeholder-link aria-label="[Ver demo de la automatización]">
+              <img src="assets/img/project-automation.svg" alt="[Captura del flujo de automatización]" loading="lazy" width="1200" height="800" />
+              <span class="project__view">Ver demo
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+              </span>
+            </a>
+            <div class="project__body">
+              <div class="project__top">
+                <h3 class="project__name">[Automatización de procesos]</h3>
+                <span class="project__cat">Automatización</span>
+              </div>
+              <p class="project__desc">[Descripción breve: tareas repetitivas resueltas por software.]</p>
+              <ul class="project__features">
+                <li>[Tareas programadas]</li>
+                <li>[Notificaciones automáticas]</li>
+                <li>[Integración entre herramientas]</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+                <span class="tag">[Tecnología]</span>
+              </div>
+              <div class="project__links">
+                <a class="link-arrow" href="#" data-placeholder-link>Ver flujo
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+                <a class="link-arrow" href="https://github.com/tu-usuario" target="_blank" rel="noopener">Repositorio
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" data-reveal="up" data-reveal-delay="400">
+            <a class="project__media" href="https://saltitos.netlify.app" target="_blank" rel="noopener" aria-label="Jugar Saltitos">
+              <img src="assets/img/project-mobile.svg" alt="Captura del juego Saltitos" loading="lazy" width="1200" height="800" />
+              <span class="project__view">Jugar
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+              </span>
+            </a>
+            <div class="project__body">
+              <div class="project__top">
+                <h3 class="project__name">Saltitos</h3>
+                <span class="project__cat">Juego · Web</span>
+              </div>
+              <p class="project__desc">
+                Juego para móvil y web con sistema de monedas, cambio de bioma según la puntuación
+                y poderes con animaciones, además de vehículos, skins y tienda.
+              </p>
+              <ul class="project__features">
+                <li>Sistema de monedas y tienda de vehículos, motos y skins.</li>
+                <li>Cambio de bioma según la puntuación y poderes con animaciones.</li>
+                <li>Accesorios aleatorios al iniciar y opción de cambiar skins.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Juego</span>
+                <span class="tag">Web</span>
+                <span class="tag">Móvil</span>
+              </div>
+              <div class="project__links">
+                <a class="link-arrow" href="https://saltitos.netlify.app" target="_blank" rel="noopener">Jugar ahora
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         05 · HABILIDADES
+         ========================================================= -->
+    <section class="section section--dark" id="habilidades" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section__head section__head--split">
+          <div>
+            <p class="index-label reveal" data-reveal="up"><span>05</span> — Stack</p>
+            <h2 class="section__title reveal" data-reveal="up" data-reveal-delay="60" id="skills-title">Habilidades<br />técnicas</h2>
+          </div>
+          <p class="section__intro reveal" data-reveal="up" data-reveal-delay="120">
+            Tecnologías y herramientas agrupadas por área. Sin porcentajes inventados:
+            agrega o quita etiquetas según tu dominio real.
+          </p>
+        </header>
+
+        <div class="skills">
+          <!-- EDIT: ajusta las etiquetas de cada categoría -->
+          <article class="skill-col reveal" data-reveal="up">
+            <div class="skill-col__head">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 22h8M12 18v4"/></svg>
+              <h3>Frontend</h3>
+            </div>
+            <ul class="tags tags--grid">
+              <li class="tag">[HTML5]</li><li class="tag">[CSS3]</li><li class="tag">[JavaScript]</li>
+              <li class="tag">[TypeScript]</li><li class="tag">[React]</li><li class="tag">[Responsive]</li>
+              <li class="tag">[Accesibilidad]</li><li class="tag">[UI / UX]</li>
+            </ul>
+          </article>
+
+          <article class="skill-col reveal" data-reveal="up" data-reveal-delay="80">
+            <div class="skill-col__head">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></svg>
+              <h3>Backend</h3>
+            </div>
+            <ul class="tags tags--grid">
+              <li class="tag">[Node.js]</li><li class="tag">[Python]</li><li class="tag">[APIs REST]</li>
+              <li class="tag">[Autenticación]</li><li class="tag">[Integraciones]</li><li class="tag">[Automatización]</li>
+            </ul>
+          </article>
+
+          <article class="skill-col reveal" data-reveal="up" data-reveal-delay="160">
+            <div class="skill-col__head">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+              <h3>Bases de datos</h3>
+            </div>
+            <ul class="tags tags--grid">
+              <li class="tag">[SQL]</li><li class="tag">[PostgreSQL]</li><li class="tag">[MySQL]</li>
+              <li class="tag">[MongoDB]</li><li class="tag">[Modelado de datos]</li><li class="tag">[Consultas]</li>
+            </ul>
+          </article>
+
+          <article class="skill-col reveal" data-reveal="up" data-reveal-delay="240">
+            <div class="skill-col__head">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6-1.4-1.4 2.6-2.6Z"/></svg>
+              <h3>Herramientas</h3>
+            </div>
+            <ul class="tags tags--grid">
+              <li class="tag">[Git]</li><li class="tag">[GitHub]</li><li class="tag">[Docker]</li>
+              <li class="tag">[Postman]</li><li class="tag">[Figma]</li><li class="tag">[Terminal]</li>
+            </ul>
+          </article>
+
+          <article class="skill-col reveal" data-reveal="up" data-reveal-delay="320">
+            <div class="skill-col__head">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg>
+              <h3>Metodologías</h3>
+            </div>
+            <ul class="tags tags--grid">
+              <li class="tag">[Scrum]</li><li class="tag">[Kanban]</li><li class="tag">[Clean Code]</li>
+              <li class="tag">[Code Review]</li><li class="tag">[Documentación]</li><li class="tag">[Testing]</li>
+            </ul>
+          </article>
+
+          <article class="skill-col reveal" data-reveal="up" data-reveal-delay="400">
+            <div class="skill-col__head">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+              <h3>Análisis y procesos</h3>
+            </div>
+            <ul class="tags tags--grid">
+              <li class="tag">Análisis lógico de problemas</li><li class="tag">Documentación técnica</li>
+              <li class="tag">Definición de requerimientos</li><li class="tag">Lógica de programación</li>
+              <li class="tag">Modelado de procesos</li><li class="tag">Automatización documental</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         06 · CERTIFICACIONES
+         ========================================================= -->
+    <section class="section section--line" id="certificaciones" aria-labelledby="cert-title">
+      <div class="container">
+        <header class="section__head section__head--split">
+          <div>
+            <p class="index-label reveal" data-reveal="up"><span>06</span> — Credenciales</p>
+            <h2 class="section__title reveal" data-reveal="up" data-reveal-delay="60" id="cert-title">Certificaciones</h2>
+          </div>
+          <p class="section__intro reveal" data-reveal="up" data-reveal-delay="120">
+            Cursos y certificaciones verificables. Agrega solo las que realmente tengas; cada tarjeta
+            incluye un botón para verificar la credencial.
+          </p>
+        </header>
+
+        <div class="certs">
+          <!-- EDIT: duplica esta tarjeta por cada certificación -->
+          <article class="cert reveal" data-reveal="up">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Foundational C# with Microsoft</h3>
+            <p class="cert__org">Microsoft</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/1QD8r6jx8g7EDBTN2P7uPASHDcCWfq25l/view?usp=drive_link" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+
+          <article class="cert reveal" data-reveal="up" data-reveal-delay="80">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Desarrollo de Bases de Datos con SQL</h3>
+            <p class="cert__org">[Institución emisora]</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/1ZRcURgjuyOszuN5j5j33i-tzKoqC7VGC/view?usp=drive_link" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+
+          <article class="cert reveal" data-reveal="up" data-reveal-delay="160">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Aplicación de Herramientas Básicas de la Hoja de Cálculo Microsoft Excel</h3>
+            <p class="cert__org">[Institución emisora]</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/1RNcdj-cnVVSaJJRpaDszckwCVmNKcQ_w/view?usp=drive_link" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+
+          <article class="cert reveal" data-reveal="up" data-reveal-delay="240">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Manejo Intermedio de la Herramienta de Hojas de Cálculo Excel</h3>
+            <p class="cert__org">[Institución emisora]</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/18Yvpcf8_Xt1NN7IqmFRB4BYHNUL0JGmO/view?usp=drive_link" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+
+          <article class="cert reveal" data-reveal="up" data-reveal-delay="320">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Traditional Games and Cultural Heritage (Bilingual)</h3>
+            <p class="cert__org">[Institución emisora]</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/1-WjbFXz5xt9ws2o8x38oeagoYz_x6tMK/view?usp=drive_link" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+
+          <article class="cert reveal" data-reveal="up" data-reveal-delay="400">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Soporte Manejo de Base de Datos SQL</h3>
+            <p class="cert__org">[Institución emisora]</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/1IeWEYjGOV6doV9ryQSokjuOJHgecdizv/view?usp=sharing" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+
+          <article class="cert reveal" data-reveal="up" data-reveal-delay="480">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Soporte de Manejo de Excel Básico</h3>
+            <p class="cert__org">[Institución emisora]</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/1xxvZ2jxR02q-qAHHgNkhACFqmj4UoPHf/view?usp=sharing" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+
+          <article class="cert reveal" data-reveal="up" data-reveal-delay="560">
+            <div class="cert__top">
+              <span class="cert__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>
+              </span>
+              <span class="cert__date">[Mes Año]</span>
+            </div>
+            <h3 class="cert__name">Soporte de Manejo de Excel Intermedio</h3>
+            <p class="cert__org">[Institución emisora]</p>
+            <a class="link-arrow" href="https://drive.google.com/file/d/1eMFtXvc3EDENVrshSsYoEgz0nJJbT9A-/view?usp=sharing" target="_blank" rel="noopener">Ver credencial
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         07 · FORMACIÓN ACADÉMICA
+         ========================================================= -->
+    <section class="section section--line" id="formacion" aria-labelledby="edu-title">
+      <div class="container edu">
+        <div class="edu__aside">
+          <p class="index-label reveal" data-reveal="up"><span>07</span> — Academia</p>
+          <h2 class="section__title reveal" data-reveal="up" data-reveal-delay="60" id="edu-title">Formación<br />académica</h2>
+        </div>
+
+        <div class="edu__list">
+          <!-- EDIT: duplica este bloque por cada estudio -->
+          <article class="edu-item reveal" data-reveal="up">
+            <div class="edu-item__head">
+              <h3>[Nombre del programa]</h3>
+              <span class="edu-item__status">[Graduado / En curso]</span>
+            </div>
+            <p class="edu-item__org">[Institución] · [Ciudad]</p>
+            <p class="edu-item__date">[Año inicio] — [Año fin / Presente]</p>
+          </article>
+
+          <article class="edu-item reveal" data-reveal="up" data-reveal-delay="80">
+            <div class="edu-item__head">
+              <h3>[Nombre del programa]</h3>
+              <span class="edu-item__status">[Graduado / En curso]</span>
+            </div>
+            <p class="edu-item__org">[Institución] · [Ciudad]</p>
+            <p class="edu-item__date">[Año inicio] — [Año fin / Presente]</p>
+          </article>
+
+          <article class="edu-item reveal" data-reveal="up" data-reveal-delay="160">
+            <div class="edu-item__head">
+              <h3>[Nombre del curso o técnico]</h3>
+              <span class="edu-item__status">[Completado / En curso]</span>
+            </div>
+            <p class="edu-item__org">[Institución] · [Ciudad]</p>
+            <p class="edu-item__date">[Año inicio] — [Año fin / Presente]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         08 · CONTACTO
+         ========================================================= -->
+    <section class="section contact" id="contacto" aria-labelledby="contact-title">
+      <div class="container">
+        <p class="index-label reveal" data-reveal="up"><span>08</span> — Contacto</p>
+        <h2 class="contact__title reveal" data-reveal="up" data-reveal-delay="60" id="contact-title">
+          ¿Construimos algo<br /><em>juntos</em>?
+        </h2>
+        <p class="contact__lead reveal" data-reveal="up" data-reveal-delay="120">
+          Busco incorporarme a un equipo de tecnología. Si tu empresa necesita un desarrollador
+          Full Stack enfocado en automatización y solución de procesos, conversemos.
+        </p>
+
+        <div class="contact__actions reveal" data-reveal="up" data-reveal-delay="180">
+          <a class="btn btn--dark btn--lg" href="mailto:mbordaborda@gmail.com">
+            <span>mbordaborda@gmail.com</span>
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+          </a>
+          <button class="btn btn--ghost btn--lg" type="button" data-action="copy-email" data-email="mbordaborda@gmail.com" data-label="Copiar correo">
+            <span class="btn__text">Copiar correo</span>
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M11 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1"/></svg>
+          </button>
+        </div>
+
+        <div class="contact__grid">
+          <a class="contact__card reveal" data-reveal="up" data-reveal-delay="0" href="https://github.com/tu-usuario" target="_blank" rel="noopener">
+            <span class="contact__k">GitHub</span>
+            <span class="contact__v">/tu-usuario</span>
+            <svg class="contact__arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+          </a>
+          <a class="contact__card reveal" data-reveal="up" data-reveal-delay="80" href="https://www.linkedin.com/in/tu-usuario/" target="_blank" rel="noopener">
+            <span class="contact__k">LinkedIn</span>
+            <span class="contact__v">/in/tu-usuario</span>
+            <svg class="contact__arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+          </a>
+          <a class="contact__card reveal" data-reveal="up" data-reveal-delay="160" href="mailto:mbordaborda@gmail.com">
+            <span class="contact__k">Correo</span>
+            <span class="contact__v">mbordaborda@gmail.com</span>
+            <svg class="contact__arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+          </a>
+          <button class="contact__card contact__card--btn reveal" data-reveal="up" data-reveal-delay="240" type="button" data-action="print">
+            <span class="contact__k">Hoja de vida</span>
+            <span class="contact__v">Descargar CV en PDF</span>
+            <svg class="contact__arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0 3-3M8 10 5 7"/><path d="M3 12v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="footer__name">Miguel Borda</span>
+        <span class="footer__role">Desarrollador de Software Full Stack</span>
+      </div>
+      <nav class="footer__nav" aria-label="Enlaces del pie de página">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="footer__socials">
+        <a class="icon-link icon-link--sm" href="https://github.com/tu-usuario" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+        </a>
+        <a class="icon-link icon-link--sm" href="https://www.linkedin.com/in/tu-usuario/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.71h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.02-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21h-4V9Z"/></svg>
+        </a>
+        <a class="icon-link icon-link--sm" href="mailto:mbordaborda@gmail.com" aria-label="Correo electrónico">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Miguel Borda. Todos los derechos reservados.</p>
+      <p class="footer__note">Diseñado y desarrollado con atención al detalle.</p>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       MASCOTA ESFERA LIMA "dev" (estilo esfera de Las Vegas)
+       · Los ojos siguen el cursor · Expresiones · Movimiento
+       EDIT: cambia el texto del bocadillo (mascot__bubble)
+       ========================================================= -->
+  <button class="mascot" id="mascot" type="button" data-expression="serious" aria-label="Ir a la sección de contacto">
+    <span class="mascot__halo" aria-hidden="true"></span>
+    <span class="mascot__shadow" aria-hidden="true"></span>
+    <span class="mascot__globe">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <radialGradient id="mbBall" cx="34%" cy="28%" r="78%">
+            <stop offset="0" stop-color="#FBFFE4"/>
+            <stop offset="0.34" stop-color="#E8FB93"/>
+            <stop offset="0.68" stop-color="#CAF24B"/>
+            <stop offset="1" stop-color="#8FB71D"/>
+          </radialGradient>
+          <radialGradient id="mbShine" cx="31%" cy="25%" r="44%">
+            <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.98"/>
+            <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0.35"/>
+            <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="mbInner" cx="70%" cy="82%" r="74%">
+            <stop offset="0.42" stop-color="#4E3B00" stop-opacity="0"/>
+            <stop offset="0.82" stop-color="#4E3B00" stop-opacity="0.24"/>
+            <stop offset="1" stop-color="#3A2C00" stop-opacity="0.55"/>
+          </radialGradient>
+          <linearGradient id="mbFloor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0.55" stop-color="#3A2C00" stop-opacity="0"/>
+            <stop offset="1" stop-color="#3A2C00" stop-opacity="0.35"/>
+          </linearGradient>
+        </defs>
+
+        <circle cx="50" cy="50" r="48" fill="url(#mbBall)"/>
+        <circle cx="50" cy="50" r="48" fill="url(#mbFloor)"/>
+        <circle cx="50" cy="50" r="48" fill="url(#mbInner)"/>
+        <path d="M16 28a46 46 0 0 1 33-20" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" opacity="0.55"/>
+        <path d="M9 39a48 48 0 0 1 13-23" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity="0.35"/>
+        <circle cx="50" cy="50" r="48" fill="url(#mbShine)"/>
+        <ellipse cx="31" cy="27" rx="6.5" ry="4" fill="#FFFFFF" opacity="0.9" transform="rotate(-28 31 27)"/>
+        <circle class="mascot__rage" cx="50" cy="50" r="48" fill="#FF4D3D"/>
+
+        <g class="mascot__eyeL">
+          <ellipse class="mascot__sclera" cx="36" cy="45" rx="9.6" ry="11.6" fill="#fff"/>
+          <circle class="mascot__pupil" cx="36" cy="47" r="5.1" fill="#221A0F"/>
+          <circle class="mascot__glint" cx="33" cy="42.4" r="2" fill="#fff"/>
+          <circle class="mascot__glint" cx="38.4" cy="50.6" r="1.1" fill="#fff" opacity="0.85"/>
+        </g>
+        <g class="mascot__eyeR">
+          <ellipse class="mascot__sclera" cx="64" cy="45" rx="9.6" ry="11.6" fill="#fff"/>
+          <circle class="mascot__pupil" cx="64" cy="47" r="5.1" fill="#221A0F"/>
+          <circle class="mascot__glint" cx="61" cy="42.4" r="2" fill="#fff"/>
+          <circle class="mascot__glint" cx="66.4" cy="50.6" r="1.1" fill="#fff" opacity="0.85"/>
+        </g>
+
+        <path class="mascot__brow mascot__brow--L" d="M28 31 L43 31"/>
+        <path class="mascot__brow mascot__brow--R" d="M57 31 L72 31"/>
+
+        <path class="mascot__lid mascot__lid--L" d="M27 46q9 9 18 0"/>
+        <path class="mascot__lid mascot__lid--R" d="M55 46q9 9 18 0"/>
+        <path class="mascot__lidhappy mascot__lidhappy--L" d="M27 47q9 -9 18 0"/>
+        <path class="mascot__lidhappy mascot__lidhappy--R" d="M55 47q9 -9 18 0"/>
+
+        <path class="mascot__mouth mascot__mouth--happy" d="M35 64q15 12 30 0" fill="none" stroke="#2A2118" stroke-width="3.6" stroke-linecap="round"/>
+        <path class="mascot__mouth mascot__mouth--line" d="M38 66h24" fill="none" stroke="#2A2118" stroke-width="3.4" stroke-linecap="round"/>
+        <path class="mascot__mouth mascot__mouth--big" d="M32 62q18 20 36 0q-18 10-36 0z" fill="#2A2118"/>
+        <ellipse class="mascot__mouth mascot__mouth--o" cx="50" cy="69" rx="4.4" ry="5.6" fill="#2A2118"/>
+        <g class="mascot__mouth mascot__mouth--laugh">
+          <path d="M31 61q19 23 38 0q-19 11-38 0z" fill="#2A2118"/>
+          <ellipse cx="50" cy="72" rx="7.5" ry="4.8" fill="#FF7A93"/>
+        </g>
+        <g class="mascot__mouth mascot__mouth--tongue">
+          <path d="M35 64q15 12 30 0" fill="none" stroke="#2A2118" stroke-width="3.6" stroke-linecap="round"/>
+          <path d="M45 68h10v6a5 5 0 0 1-10 0z" fill="#FF7A93"/>
+        </g>
+        <path class="mascot__mouth mascot__mouth--angry" d="M35 72q15 -12 30 0" fill="none" stroke="#2A2118" stroke-width="3.6" stroke-linecap="round"/>
+
+        <g class="mascot__glasses" fill="none" stroke="#2A2118" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="36" cy="45" r="13"/>
+          <circle cx="64" cy="45" r="13"/>
+          <path d="M49 45h2"/>
+          <path d="M23 43 12 40"/>
+          <path d="M77 43 88 40"/>
+        </g>
+        <path class="mascot__glassGlint" d="M29.5 39a9 9 0 0 1 7-3" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path class="mascot__glassGlint" d="M57.5 39a9 9 0 0 1 7-3" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+      </svg>
+    </span>
+    <span class="mascot__bubble">¿Trabajo con tu equipo?</span>
+    <span class="mascot__code mascot__code--1" aria-hidden="true">&lt;/&gt;</span>
+    <span class="mascot__code mascot__code--2" aria-hidden="true">{ }</span>
+    <span class="mascot__code mascot__code--3" aria-hidden="true">$_</span>
+  </button>
+
+  <!-- Volver arriba -->
+  <button class="to-top" id="to-top" type="button" aria-label="Volver arriba">
+    <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3m0 0L3.5 7.5M8 3l4.5 4.5"/></svg>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Miguel Borda — Desarrollador de Software">
+  <defs>
+    <linearGradient id="og-lime" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DAFA7A"/><stop offset="1" stop-color="#BCE93A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#F4F4F1"/>
+  <circle cx="1030" cy="120" r="220" fill="#EDF7D2" opacity="0.8"/>
+  <circle cx="180" cy="560" r="190" fill="#E9E9E4" opacity="0.8"/>
+  <rect x="60" y="60" width="1080" height="510" rx="28" fill="none" stroke="#E0E0D9"/>
+
+  <g transform="translate(120, 150)">
+    <rect x="0" y="0" width="56" height="56" rx="14" fill="#0B0B0C"/>
+    <g fill="none" stroke="#CAF24B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(8,8)">
+      <path d="M14 12 6 20l8 8"/>
+      <path d="m26 12 8 8-8 8"/>
+      <path d="M22 8 18 32"/>
+    </g>
+  </g>
+
+  <text x="120" y="330" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="82" font-weight="800" fill="#0B0B0C" letter-spacing="-3">Miguel Borda</text>
+  <rect x="120" y="352" width="360" height="14" rx="7" fill="url(#og-lime)"/>
+  <text x="120" y="430" font-family="JetBrains Mono, Consolas, monospace" font-size="30" fill="#5C5C64" letter-spacing="3">DESARROLLADOR DE SOFTWARE</text>
+  <text x="120" y="482" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" fill="#8A8A92">Aplicaciones web · APIs · Dashboards · Automatización</text>
+
+  <rect x="880" y="440" width="240" height="70" rx="35" fill="#0B0B0C"/>
+  <circle cx="916" cy="475" r="9" fill="#CAF24B"/>
+  <text x="940" y="485" font-family="JetBrains Mono, Consolas, monospace" font-size="22" fill="#F2F2EF">Disponible</text>
+</svg>
